@@ -1,23 +1,46 @@
 import React, { useState } from "react";
-import "./login.css";
 import { LoginForm } from "./LoginForm";
 import { Register } from "./Register";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [form, useForm] = useState(true);
-  const [login, useLogin] = useState("col login ms-4 me-4 select");
-  const [register, useRegister] = useState("col login  ms-4 me-4");
+  const navigate=useNavigate()
+  const [form, setForm] = useState(true);
+  const [login, setLogin] = useState("col login ms-4 me-4 select");
+  const [register, setRegister] = useState("col login  ms-4 me-4");
+  const [info, setInfo] = useState(null);
+  const handleSubmit = (e) => {
+    
+    e.preventDefault();
+    if (form) {
+      console.log("Fomulario de Login");
+      console.log(info);
+      navigate("/tienda")
+    } else {
+      console.log("Formulario de Registro");
+      console.log(info);
+      Swal.fire({
+        title: "¡Echo!",
+        text: "¡Usuario registrado correctamente!",
+        icon: "success",
+      });
+    }
+    setForm(true);
+    setLogin("col login ms-4 me-4 select");
+    setRegister("col login  ms-4 me-4");
+  };
   return (
     <div className="container text-center w-50 mt-5 mb-5">
-      <form className="form-control loginForm">
+      <form className="form-control loginForm" onSubmit={handleSubmit}>
         <h3 className="variedadesByJ mt-3 mb-3">Variedades ByJ</h3>
         <div className="row mt-2 ms-5 me-5">
           <h3
             className={login}
             onClick={() => {
-              useForm(true);
-              useLogin("col login ms-4 me-4 select");
-              useRegister("col login  ms-4 me-4");
+              setForm(true);
+              setLogin("col login ms-4 me-4 select");
+              setRegister("col login  ms-4 me-4");
             }}
           >
             <u>Login</u>
@@ -25,15 +48,19 @@ export const Login = () => {
           <h3
             className={register}
             onClick={() => {
-              useForm(false);
-              useLogin("col login ms-4 me-4");
-              useRegister("col login  ms-4 me-4 select");
+              setForm(false);
+              setLogin("col login ms-4 me-4");
+              setRegister("col login  ms-4 me-4 select");
             }}
           >
             <u>Register</u>{" "}
           </h3>
         </div>
-        {form?<LoginForm/>: <Register/>}
+        {form ? (
+          <LoginForm setInfo={setInfo} />
+        ) : (
+          <Register setInfo={setInfo} />
+        )}
       </form>
     </div>
   );

@@ -1,7 +1,9 @@
 export const BASIC_MODULES_ROUTES = {
     404: "*",
-    HOME: "/",
+    HOME: "/tienda",
   }
-  export const ADMIN_INVENTARY_CONTROL = {
-     INVENTARY_CONTROL: "/inventary-control",
+  export const PAGINA_PRINCIPAL = {
   }
+  export const LOGIN = {
+   LOGIN: "/login",
+}
