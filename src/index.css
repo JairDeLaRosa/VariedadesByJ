@@ -79,14 +79,14 @@ nav {
   background-color: white;
   display: inline-block;
   width: 247px;
-  height: 370px;
+  height: 360px;
   padding: 10px;
   border: solid 1px #cecece;
   border-radius: 10px;
   cursor: pointer;
   transition: all 500ms;
   &:hover {
-    box-shadow: 0 0 3px #979797;
+    box-shadow: 0 0 3px #008cff;
   }
 }
 .card-img {
@@ -107,6 +107,8 @@ nav {
   text-overflow: ellipsis; /* Añade puntos suspensivos al final del texto */
   white-space: normal; /* Muestra puntos suspensivos (...) cuando el texto es demasiado largo */
   color: #000000;
+  font-size: 17px;
+  font-weight: 600;
   &:hover {
     text-decoration: underline;
   }
@@ -146,12 +148,10 @@ nav {
   }
 }
 .card-precio {
-  font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 19xpx;
   display: block;
-  color: #940000;
+  color: #9c0000;
   margin-bottom: 10px;
 }
 .img-modal{
@@ -200,4 +200,9 @@ p{
   position: absolute;
   right: 15px;
   bottom: 12px;
+}
+.modalCart{
+  position: absolute;
+  right: 0;
+  top: -30px;
 }

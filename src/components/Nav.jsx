@@ -1,13 +1,13 @@
 import React from "react";
 import logo from "./../assets/logo.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const Nav = () => {
   const navigate = useNavigate();
   return (
     <nav>
       <div className="container d-flex justify-content-between align-items-center">
         <div>
-          <img src={logo} alt="Logo" width={65} className="mt-2 mb-2" />
+          <img src={logo} alt="Logo" width={65} className="mt-2 mb-2" onClick={()=>navigate("/")} style={{cursor: "pointer"}}/>
         </div>
         <div className="text-end d-flex">
           <a
@@ -31,7 +31,7 @@ export const Nav = () => {
             </span>
           </a>
 
-          <span className="ms-3 me-3 d-flex align-items-center hover">
+          <span className="ms-3 me-3 d-flex align-items-center hover" onClick={()=>navigate("/nosotros")}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="26"

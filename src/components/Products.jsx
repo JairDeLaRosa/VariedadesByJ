@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { NextArrow } from "./NextArrow";
 import { PrevArrow } from "./PrevArrow";
 import { ModalProduct } from "./ModalProduct";
+import ModalCart from "./ModalCart";
 
 export const Products = () => {
   const settings = {
@@ -45,6 +46,7 @@ export const Products = () => {
   };
   return (
     <><ModalProduct/>
+    <ModalCart/>
       <h2 className="text-center mt-3 variedadesByJ">Ofertas</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">

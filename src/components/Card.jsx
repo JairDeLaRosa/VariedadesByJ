@@ -9,8 +9,8 @@ export const Card = () => {
       <div className="nameProduct">
         <span>Globos de estrellas con motivo de cerveza</span>
       </div>
-      <span>Inventrario : 4</span>
-      <span className="card-precio">$ 50.000,00</span>
+      <span>Unidades : 5</span>
+      <span className="card-precio mt-1">$ 50.000,00</span>
     </button>
   );
 };
