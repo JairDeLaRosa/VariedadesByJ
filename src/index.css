@@ -49,9 +49,20 @@ label {
   font-optical-sizing: auto;
   font-style: normal;
 }
+.bg-nav{
+  background-color: #fe0000;
+  color: beige;
+}
 nav {
   background-color: #fe0000;
   color: beige;
+}
+.nav-link{
+  color: #ffffff;
+}
+.navbar-toggler{
+  color: #ffffff;
+  border: solid 1px #ffffff;
 }
 .categories {
   background-color: #ffffff;
@@ -78,7 +89,7 @@ nav {
 .cards {
   background-color: white;
   display: inline-block;
-  width: 247px;
+  width: 90%;
   height: 360px;
   padding: 10px;
   border: solid 1px #cecece;

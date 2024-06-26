@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import product from "./../assets/product.jpg";
 import { StarRating } from "./StarRating";
 import { NumericFormat } from "react-number-format";
+import Swal from "sweetalert2";
 
 export const ModalProduct = () => {
     const precio=20000
@@ -15,6 +16,12 @@ export const ModalProduct = () => {
         if(cantidad>1){
         setCantidad(cantidad-1)
         }
+    } 
+    const comprar=()=>{
+      Swal.fire({
+        title: "Compra realizada",
+        icon: "success"
+      });
     }
   return (
     <>
@@ -85,7 +92,7 @@ export const ModalProduct = () => {
               <button type="button" class="btn btn-primary">
                 Agregar al carro
               </button>
-              <button type="button" class="btn btn-success">
+              <button type="button" class="btn btn-success" onClick={comprar}>
                 Comprar
               </button>
             </div>

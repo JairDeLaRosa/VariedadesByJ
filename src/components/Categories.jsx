@@ -8,7 +8,7 @@ export const Categories = () => {
           <div>
             <div class="nav-item dropdown ">
               <span
-                class="nav-link dropdown-toggle hover"
+                class="dropdown-toggle hover"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -29,7 +29,7 @@ export const Categories = () => {
           <div>
             <div className="nav-item dropdown">
               <span
-                className="nav-link dropdown-toggle hover"
+                className=" dropdown-toggle hover"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -50,7 +50,7 @@ export const Categories = () => {
           <div>
             <div class="nav-item dropdown">
               <span
-                class="nav-link dropdown-toggle hover"
+                class="dropdown-toggle hover"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"

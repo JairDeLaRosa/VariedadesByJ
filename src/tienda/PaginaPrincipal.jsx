@@ -10,7 +10,7 @@ export const PaginaPrincipal = () => {
       <section className="categories w-100">
         <Categories/>
       </section>
-      <section className="products container mb-3">
+      <section className="products container-fluid mb-3">
         <Products/>
       </section>
     </>
