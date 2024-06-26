@@ -4,7 +4,7 @@ import { ProductCart } from './ProductCart'
 export default function ModalCart() {
   return (
     <><div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modalCart w-100">
+    <div class="modal-dialog modalCart w-100 mt-4">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Tu carrito</h1>

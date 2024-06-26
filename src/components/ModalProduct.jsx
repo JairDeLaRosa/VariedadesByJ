@@ -5,24 +5,24 @@ import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
 
 export const ModalProduct = () => {
-    const precio=20000
-    const [cantidad, setCantidad]=useState(1)
-    const suma=()=>{
-        if(cantidad<5){
-            setCantidad(cantidad+1)
-        }
+  const precio = 20000;
+  const [cantidad, setCantidad] = useState(1);
+  const suma = () => {
+    if (cantidad < 5) {
+      setCantidad(cantidad + 1);
     }
-    const resta=()=>{
-        if(cantidad>1){
-        setCantidad(cantidad-1)
-        }
-    } 
-    const comprar=()=>{
-      Swal.fire({
-        title: "Compra realizada",
-        icon: "success"
-      });
+  };
+  const resta = () => {
+    if (cantidad > 1) {
+      setCantidad(cantidad - 1);
     }
+  };
+  const comprar = () => {
+    Swal.fire({
+      title: "Compra realizada",
+      icon: "success",
+    });
+  };
   return (
     <>
       <div
@@ -71,18 +71,25 @@ export const ModalProduct = () => {
                       </p>
                       <p className="mt-2">Seleccione la cantidad</p>
                       <p className="mt-2">
-                        <button className="btn btn-light me-3" onClick={resta}>-</button>{cantidad}
-                        <button className="btn btn-light ms-3 " onClick={suma}>+</button>
+                        <button className="btn btn-light me-3" onClick={resta}>
+                          -
+                        </button>
+                        {cantidad}
+                        <button className="btn btn-light ms-3 " onClick={suma}>
+                          +
+                        </button>
                       </p>
-                      <label className="display-6 model-precio"><NumericFormat
-                  value={precio*cantidad}
-                  displayType="text"
-                  thousandSeparator="."
-                  decimalSeparator=","
-                  prefix={"$ "}
-                  decimalScale={2}
-                  fixedDecimalScale
-                /></label>
+                      <label className="display-6 model-precio">
+                        <NumericFormat
+                          value={precio * cantidad}
+                          displayType="text"
+                          thousandSeparator="."
+                          decimalSeparator=","
+                          prefix={"$ "}
+                          decimalScale={2}
+                          fixedDecimalScale
+                        />
+                      </label>
                     </div>
                   </div>
                 </div>

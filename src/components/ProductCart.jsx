@@ -3,16 +3,16 @@ import product from "./../assets/product.jpg";
 import { NumericFormat } from "react-number-format";
 export const ProductCart = () => {
   return (
-    <div class="card h-100 mb-1" style={{ maxWidth: 770 }}>
-      <div class="row g-0">
-        <div class="col-md-4">
+    <div class="card h-100 mb-1">
+      <div class="d-flex">
+        <div style={{width: 150}}>
           <img
             src={product}
             class="img-fluid rounded-start card-img-img"
             alt="..."
           />
         </div>
-        <div class="col-md-8 d-flex align-items-center">
+        <div class="w-75">
           <div class="card-body">
             <p class="card-title"><b>Globos de estrellas con motivo de cerveza</b>
             </p>
@@ -25,8 +25,7 @@ export const ProductCart = () => {
                 prefix={"$ "}
                 decimalScale={2}
                 fixedDecimalScale
-                className="me-3"
-              /> <button className="btn btn-primary me-1">Editar</button><button className="btn btn-danger">Quitar</button></p>
+              /> <div className="buttos-cart"><button className="btn btn-primary me-1">Editar</button><button className="btn btn-danger">Quitar</button></div></p>
           </div>
         </div>
       </div>

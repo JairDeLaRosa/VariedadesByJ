@@ -7,6 +7,7 @@ import { NextArrow } from "./NextArrow";
 import { PrevArrow } from "./PrevArrow";
 import { ModalProduct } from "./ModalProduct";
 import ModalCart from "./ModalCart";
+import { products } from "../Data/Products";
 
 export const Products = () => {
   const settings = {
@@ -43,45 +44,25 @@ export const Products = () => {
     ],
   };
   return (
-    <><ModalProduct/>
-    <ModalCart/>
+    <>
+      <ModalProduct />
+      <ModalCart />
       <h2 className="text-center mt-3 variedadesByJ">Ofertas</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {products.map((produc) => (
+            <Card
+              img={produc.img}
+              name={produc.nombre}
+              precio={produc.precio}
+              unidades={produc.unidades}
+            />
+          ))}
         </Slider>
       </div>
       <h2 className="text-center mt-3 variedadesByJ">Mas vendidos</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
           <Card />
         </Slider>
       </div>
@@ -89,58 +70,17 @@ export const Products = () => {
       <div className="w-100">
         <Slider {...settings} className="slider">
           <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
         </Slider>
       </div>
       <h2 className="text-center mt-3 variedadesByJ">Piñatería</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
           <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
         </Slider>
       </div>
       <h2 className="text-center mt-3 variedadesByJ">Moda</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
           <Card />
           <Card />
         </Slider>

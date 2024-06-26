@@ -103,6 +103,7 @@ nav {
 .card-img {
   width: 100%;
   height: 220px;
+  margin-bottom: 10px;
 }
 .card-img-img {
   width: 100%;
@@ -215,5 +216,11 @@ p{
 .modalCart{
   position: absolute;
   right: 0;
-  top: -30px;
+  top: -27px;
+}
+.buttos-cart{
+  position: absolute;
+  right: 10px;
+  top: 62%;
+
 }

@@ -18,10 +18,10 @@ export const Categories = () => {
               </span>
               <ul class="dropdown-menu">
                 <li>
-                  <span class="dropdown-item">Action</span>
+                  <span class="dropdown-item">Cintas</span>
                 </li>
                 <li>
-                  <span class="dropdown-item">Another action</span>
+                  <span class="dropdown-item">Papeles</span>
                 </li>
               </ul>
             </div>
@@ -39,10 +39,13 @@ export const Categories = () => {
               </span>
               <ul class="dropdown-menu">
                 <li>
-                  <span class="dropdown-item">Action</span>
+                  <span class="dropdown-item">Herramientas para fiestas</span>
                 </li>
                 <li>
-                  <span class="dropdown-item">Another action</span>
+                  <span class="dropdown-item">Globos</span>
+                </li>
+                <li>
+                  <span class="dropdown-item">Bolsas</span>
                 </li>
               </ul>
             </div>
