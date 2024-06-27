@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 export const Nav = () => {
   const navigate = useNavigate();
   return (
-    <nav class="navbar navbar-expand-md bg-nav" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-nav" >
       <div class="container">
-        <div>
+        <div className="d-flex align-items-center" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
           <img
             src={"../assets/logo.jpg"}
             alt="Logo"
             width={65}
             className="mt-2 mb-2"
-            onClick={() => navigate("/")}
-            style={{ cursor: "pointer" }}
-          />
+            
+            
+          /> <div className="ms-3 variedadesByJTitle"><em>Variedades y Piñatería B y J</em> </div>
         </div>
         <button
           class="navbar-toggler"
@@ -24,9 +24,19 @@ export const Nav = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-</svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            fill="currentColor"
+            class="bi bi-list"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
@@ -39,7 +49,7 @@ export const Nav = () => {
                   rel="noopener noreferrer"
                   className="link "
                 >
-                  <span className="d-flex align-items-center hover nav-link">
+                  <span className="d-flex align-items-center hover nav-link nav-it">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -56,7 +66,7 @@ export const Nav = () => {
               </li>
               <li class="nav-item">
                 <span
-                  className="d-flex align-items-center hover nav-link"
+                  className="d-flex align-items-center hover nav-link nav-it"
                   onClick={() => navigate("/nosotros")}
                 >
                   <svg
@@ -74,7 +84,7 @@ export const Nav = () => {
               </li>
               <li class="nav-item">
                 <span
-                  className="d-flex align-items-center hover nav-link"
+                  className="d-flex align-items-center hover nav-link nav-it"
                   onClick={() => navigate("/login")}
                 >
                   <svg
@@ -98,7 +108,7 @@ export const Nav = () => {
                 </span>
               </li>
               <li class="nav-item">
-                <span className="d-flex align-items-center hover nav-link">
+                <span className="d-flex align-items-center hover nav-link nav-it">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -112,8 +122,8 @@ export const Nav = () => {
                   Mi cuenta
                 </span>
               </li>
-              <li class="nav-item"> 
-                <span className="d-flex align-items-center hover nav-link">
+              <li class="nav-item">
+                <span className="d-flex align-items-center hover nav-link nav-it">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"

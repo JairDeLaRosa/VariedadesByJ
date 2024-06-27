@@ -127,11 +127,6 @@ const a=()=>{
           ))}
         </Slider>
       </div>
-      <h2 className="text-center mt-3 variedadesByJ">Moda</h2>
-      <div className="w-100">
-        <Slider {...settings} className="slider">
-        </Slider>
-      </div>
     </>
   );
 };
