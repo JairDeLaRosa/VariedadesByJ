@@ -50,7 +50,7 @@ export const Categories = ({inputSearch, setInputSearch,onClickSearch, onClickCa
               </ul>
             </div>
           </div>
-          <div>
+          {/* <div>
             <div class="nav-item dropdown">
               <span
                 class="dropdown-toggle hover"
@@ -70,7 +70,7 @@ export const Categories = ({inputSearch, setInputSearch,onClickSearch, onClickCa
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
           <button className="hover cart btn" data-bs-toggle="modal" data-bs-target="#exampleModal2" type='button'>
             <span className="cartCount">0</span>
             <svg
