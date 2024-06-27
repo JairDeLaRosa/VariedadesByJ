@@ -38,8 +38,8 @@ export const LoginForm = ({setInfo}) => {
         </div>
         <a href="#">¿Olvidó su contraseña?</a>
       </div>
-      <div className="w-100 text-start ms-5 me-5 mt-3 mb-4">
-        <button className="btn btn-primary w-25">Iniciar sesión</button>
+      <div style={{width: 200}} className="text-start ms-5 me-5 mt-3 mb-4">
+        <button className="btn btn-primary">Iniciar sesión</button>
       </div>
     </>
   );

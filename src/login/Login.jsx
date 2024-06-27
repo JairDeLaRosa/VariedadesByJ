@@ -31,8 +31,8 @@ export const Login = () => {
     setRegister("col login  ms-4 me-4");
   };
   return (
-    <div className="container text-center w-50 mt-5 mb-5">
-      <form className="form-control loginForm" onSubmit={handleSubmit}>
+    <div className="w-100 d-flex justify-content-center w-50 mt-5 mb-5">
+      <div style={{width: 500}} className="text-center"><form className="form-control loginForm" onSubmit={handleSubmit}>
         <h3 className="variedadesByJ mt-3 mb-3">Variedades ByJ</h3>
         <div className="row mt-2 ms-5 me-5">
           <h3
@@ -61,7 +61,8 @@ export const Login = () => {
         ) : (
           <Register setInfo={setInfo} />
         )}
-      </form>
+      </form></div>
+      
     </div>
   );
 };

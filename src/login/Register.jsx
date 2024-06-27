@@ -18,7 +18,7 @@ export const Register = ({ setInfo }) => {
   return (
     <>
       <div className="text-start ms-5 me-5 mt-3 d-flex justify-content-between">
-        <div>
+        <div className="me-1">
           <label className="form-label">
             Nombres<span className="text-danger">*</span>
           </label>
@@ -30,7 +30,7 @@ export const Register = ({ setInfo }) => {
             onChange={(e) => setData({ ...data, nombres: e.target.value })}
           />
         </div>
-        <div>
+        <div className="ms-1">
           <label className="form-label">
             Apellidos<span className="text-danger">*</span>
           </label>
@@ -44,7 +44,7 @@ export const Register = ({ setInfo }) => {
         </div>
       </div>
       <div className="text-start ms-5 me-5 mt-3 d-flex justify-content-between">
-        <div>
+        <div className="me-1">
           <label for="inputEmail4" className="form-label">
             Departamento
           </label>
@@ -94,7 +94,7 @@ export const Register = ({ setInfo }) => {
             <option value="vichada">Vichada</option>
           </select>
         </div>
-        <div>
+        <div className="ms-1">
           <label className="form-label">
             Municipio<span className="text-danger">*</span>
           </label>
@@ -108,7 +108,7 @@ export const Register = ({ setInfo }) => {
         </div>
       </div>
       <div className="text-start ms-5 me-5 mt-3 d-flex justify-content-between">
-        <div>
+        <div className="me-1">
           <label className="form-label">
             Dirección<span className="text-danger">*</span>
           </label>
@@ -120,7 +120,7 @@ export const Register = ({ setInfo }) => {
             onChange={(e) => setData({ ...data, direccion: e.target.value })}
           />
         </div>
-        <div>
+        <div className="ms-1">
           <label className="form-label">
             Telefono<span className="text-danger">*</span>
           </label>
