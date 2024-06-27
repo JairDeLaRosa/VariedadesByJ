@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import product from "./../assets/product.jpg";
 import { StarRating } from "./StarRating";
 import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
 
-export const ModalProduct = () => {
-  const precio = 20000;
+export const ModalProduct = ({product}) => {
+  const precio = product.precio;
   const [cantidad, setCantidad] = useState(1);
   const suma = () => {
-    if (cantidad < 5) {
+    if (cantidad < product.unidades) {
       setCantidad(cantidad + 1);
     }
   };
@@ -17,6 +16,13 @@ export const ModalProduct = () => {
       setCantidad(cantidad - 1);
     }
   };
+  const tecla=(e)=>{
+    if (e.key ==='ArrowLeft'){
+      resta()
+    }else if(e.key ==='ArrowRight'){
+      suma()
+    }
+  }
   const comprar = () => {
     Swal.fire({
       title: "Compra realizada",
@@ -25,7 +31,8 @@ export const ModalProduct = () => {
   };
   return (
     <>
-      <div
+      <div 
+      onKeyDown={tecla}
         class="modal fade"
         id="exampleModal"
         tabindex="-1"
@@ -50,7 +57,7 @@ export const ModalProduct = () => {
                 <div class="row g-0">
                   <div class="col-md-4">
                     <img
-                      src={product}
+                      src={`../assets/${product.img}`}
                       class="img-fluid rounded-start card-img-img"
                       alt="..."
                     />
@@ -58,16 +65,14 @@ export const ModalProduct = () => {
                   <div class="col-md-8">
                     <div class="card-body">
                       <h5 class="card-title">
-                        Globos de estrellas con motivo de cerveza
+                        {product.nombre}
                       </h5>
                       <label class="card-text">
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
+                        {product.descripcion}
                       </label>
                       <StarRating rating={4.5} />
                       <p class="card-text">
-                        <small class="text-body-secondary">Inventario: 5</small>
+                        <small class="text-body-secondary">Inventario: {product.unidades}</small>
                       </p>
                       <p className="mt-2">Seleccione la cantidad</p>
                       <p className="mt-2">

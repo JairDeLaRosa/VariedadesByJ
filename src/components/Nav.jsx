@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./../assets/logo.jpg";
 import { useNavigate } from "react-router-dom";
 export const Nav = () => {
   const navigate = useNavigate();
@@ -8,7 +7,7 @@ export const Nav = () => {
       <div class="container">
         <div>
           <img
-            src={logo}
+            src={"../assets/logo.jpg"}
             alt="Logo"
             width={65}
             className="mt-2 mb-2"

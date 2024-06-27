@@ -1,5 +1,4 @@
 import React from "react";
-import product from "./../assets/product.jpg";
 import { NumericFormat } from "react-number-format";
 export const ProductCart = () => {
   return (
@@ -7,7 +6,7 @@ export const ProductCart = () => {
       <div class="d-flex">
         <div style={{width: 150}}>
           <img
-            src={product}
+            src={`../assets/product.jpg`}
             class="img-fluid rounded-start card-img-img"
             alt="..."
           />

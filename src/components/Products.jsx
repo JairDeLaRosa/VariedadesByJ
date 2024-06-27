@@ -10,6 +10,7 @@ import ModalCart from "./ModalCart";
 import { products } from "../Data/Products";
 
 export const Products = ({ producsSearch }) => {
+  const [producModal,setProductModal]=useState([])
   let search = [];
   let papeleria = [];
   let piñateria = [];
@@ -28,8 +29,9 @@ const a=()=>{
 
 }
     
-  console.log(papeleria)
-  console.log(piñateria)
+  const onClickCard=(produc)=>{
+    setProductModal(produc)
+  }
   const settings = {
     dots: false,
     infinite: true,
@@ -38,6 +40,9 @@ const a=()=>{
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -66,16 +71,14 @@ const a=()=>{
   return (
     <>
     {a()}
-      <ModalProduct />
+      <ModalProduct product={producModal}/>
       <ModalCart />
       <div className="w-100 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {search.map((produc) => (
           <div className="col">
             <Card
-              img={produc.img}
-              name={produc.nombre}
-              precio={produc.precio}
-              unidades={produc.unidades}
+              produc={produc}
+              onClick={onClickCard}
             />
           </div>
         ))}
@@ -85,10 +88,8 @@ const a=()=>{
         <Slider {...settings} className="slider">
           {products.map((produc) => (
             <Card
-              img={produc.img}
-              name={produc.nombre}
-              precio={produc.precio}
-              unidades={produc.unidades}
+            produc={produc}
+            onClick={onClickCard}
             />
           ))}
         </Slider>
@@ -98,10 +99,8 @@ const a=()=>{
         <Slider {...settings} className="slider">
           {products.map((produc) => (
             <Card
-              img={produc.img}
-              name={produc.nombre}
-              precio={produc.precio}
-              unidades={produc.unidades}
+            produc={produc}
+            onClick={onClickCard}
             />
           ))}
         </Slider>
@@ -111,10 +110,8 @@ const a=()=>{
         <Slider {...settings} className="slider">
           {papeleria.map((produc) => (
             <Card
-              img={produc.img}
-              name={produc.nombre}
-              precio={produc.precio}
-              unidades={produc.unidades}
+            produc={produc}
+            onClick={onClickCard}
             />
           ))}
         </Slider>
@@ -124,10 +121,8 @@ const a=()=>{
         <Slider {...settings} className="slider">
           {piñateria.map((produc) => (
             <Card
-              img={produc.img}
-              name={produc.nombre}
-              precio={produc.precio}
-              unidades={produc.unidades}
+            produc={produc}
+            onClick={onClickCard}
             />
           ))}
         </Slider>
@@ -135,8 +130,6 @@ const a=()=>{
       <h2 className="text-center mt-3 variedadesByJ">Moda</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          <Card />
-          <Card />
         </Slider>
       </div>
     </>
