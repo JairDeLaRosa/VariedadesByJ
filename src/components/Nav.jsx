@@ -9,9 +9,9 @@ export const Nav = () => {
           <img
             src={"../assets/logo.jpg"}
             alt="Logo"
-            width={65}
+            width={60}
             className="mt-2 mb-2"
-          /> <div className="ms-2 variedadesByJTitle"><em>Variedades y Piñatería B y J</em> </div>
+          /> <div className="variedadesByJTitle"><em>Variedades y Piñatería B y J</em> </div>
         </div>
         <button
           class="navbar-toggler"

@@ -10,9 +10,9 @@ export const Categories = ({
   return (
     <nav class="navbar navbar-expand-lg" style={{ background: "#ffffff" }}>
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <div class="navbar-brand" style={{width: 230}}>
           <Seacrch />
-        </a>
+        </div>
         <button
           class="navbar-toggler"
           type="button"
