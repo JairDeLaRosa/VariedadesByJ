@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "./Card";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,7 +9,27 @@ import { ModalProduct } from "./ModalProduct";
 import ModalCart from "./ModalCart";
 import { products } from "../Data/Products";
 
-export const Products = () => {
+export const Products = ({ producsSearch }) => {
+  let search = [];
+  let papeleria = [];
+  let piñateria = [];
+  if (producsSearch != null) {
+    search = producsSearch;
+  }
+const a=()=>{
+  for (let index = 0; index < products.length; index++) {
+    const element = products[index].tienda;
+    if (element === "papeleria") {
+      papeleria.push(products[index]);
+    } else if (element === "piñateria") {
+      piñateria.push(products[index]);
+    }
+  }
+
+}
+    
+  console.log(papeleria)
+  console.log(piñateria)
   const settings = {
     dots: false,
     infinite: true,
@@ -45,8 +65,21 @@ export const Products = () => {
   };
   return (
     <>
+    {a()}
       <ModalProduct />
       <ModalCart />
+      <div className="w-100 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {search.map((produc) => (
+          <div className="col">
+            <Card
+              img={produc.img}
+              name={produc.nombre}
+              precio={produc.precio}
+              unidades={produc.unidades}
+            />
+          </div>
+        ))}
+      </div>
       <h2 className="text-center mt-3 variedadesByJ">Ofertas</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
@@ -63,19 +96,40 @@ export const Products = () => {
       <h2 className="text-center mt-3 variedadesByJ">Mas vendidos</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          <Card />
+          {products.map((produc) => (
+            <Card
+              img={produc.img}
+              name={produc.nombre}
+              precio={produc.precio}
+              unidades={produc.unidades}
+            />
+          ))}
         </Slider>
       </div>
       <h2 className="text-center mt-3 variedadesByJ">Papelería</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          <Card />
+          {papeleria.map((produc) => (
+            <Card
+              img={produc.img}
+              name={produc.nombre}
+              precio={produc.precio}
+              unidades={produc.unidades}
+            />
+          ))}
         </Slider>
       </div>
       <h2 className="text-center mt-3 variedadesByJ">Piñatería</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          <Card />
+          {piñateria.map((produc) => (
+            <Card
+              img={produc.img}
+              name={produc.nombre}
+              precio={produc.precio}
+              unidades={produc.unidades}
+            />
+          ))}
         </Slider>
       </div>
       <h2 className="text-center mt-3 variedadesByJ">Moda</h2>

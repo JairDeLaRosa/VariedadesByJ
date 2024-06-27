@@ -1,12 +1,12 @@
 import React from 'react'
 import { Seacrch } from './Seacrch'
 
-export const Categories = () => {
+export const Categories = ({inputSearch, setInputSearch,onClickSearch, onClickCategorie}) => {
   return (
     <div className="container categories d-flex justify-content-between align-items-center">
-          <Seacrch />
+          <Seacrch inputSearch={inputSearch} setInputSearch={setInputSearch} onClickSearch={onClickSearch}/>
           <div>
-            <div class="nav-item dropdown ">
+            <div class="nav-item dropdown">
               <span
                 class="dropdown-toggle hover"
                 href="#"
@@ -17,10 +17,10 @@ export const Categories = () => {
                 Papelería
               </span>
               <ul class="dropdown-menu">
-                <li>
+                <li onClick={()=>onClickCategorie("cinta")}>
                   <span class="dropdown-item">Cintas</span>
                 </li>
-                <li>
+                <li onClick={()=>onClickCategorie("papeles")}>
                   <span class="dropdown-item">Papeles</span>
                 </li>
               </ul>
@@ -38,13 +38,13 @@ export const Categories = () => {
                 Piñatería
               </span>
               <ul class="dropdown-menu">
-                <li>
+                <li onClick={()=>onClickCategorie("herramientas para fiestas")}>
                   <span class="dropdown-item">Herramientas para fiestas</span>
                 </li>
-                <li>
+                <li onClick={()=>onClickCategorie("globos")}>
                   <span class="dropdown-item">Globos</span>
                 </li>
-                <li>
+                <li onClick={()=>onClickCategorie("bolsas")}>
                   <span class="dropdown-item">Bolsas</span>
                 </li>
               </ul>
