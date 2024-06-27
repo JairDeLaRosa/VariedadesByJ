@@ -11,9 +11,7 @@ export const Nav = () => {
             alt="Logo"
             width={65}
             className="mt-2 mb-2"
-            
-            
-          /> <div className="ms-3 variedadesByJTitle"><em>Variedades y Piñatería B y J</em> </div>
+          /> <div className="ms-2 variedadesByJTitle"><em>Variedades y Piñatería B y J</em> </div>
         </div>
         <button
           class="navbar-toggler"
