@@ -106,7 +106,7 @@ export const Nav = () => {
                 </span>
               </li>
               <li class="nav-item">
-                <span className="d-flex align-items-center hover nav-link nav-it">
+                <span className="d-flex align-items-center hover nav-link nav-it" onClick={() => navigate("/perfil")}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"

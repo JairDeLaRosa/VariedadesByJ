@@ -3,7 +3,8 @@ export const BASIC_MODULES_ROUTES = {
     HOME: "/tienda",
   }
   export const PAGINA_PRINCIPAL = {
-    NOSOTROS: "/nosotros"
+    NOSOTROS: "/nosotros",
+    MICUENTA: "/perfil"
   }
   export const LOGIN = {
    LOGIN: "/login",

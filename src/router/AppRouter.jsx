@@ -4,6 +4,7 @@ import { Login } from "../login/Login";
 import { BASIC_MODULES_ROUTES, LOGIN, PAGINA_PRINCIPAL } from "./Router";
 import { PaginaPrincipal } from "../tienda/PaginaPrincipal";
 import { Nosotros } from "../tienda/Nosotros";
+import { MiCuenta } from "../tienda/MiCuenta";
 
 export const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRouter = () => {
         <Route path={BASIC_MODULES_ROUTES.HOME} element={<PaginaPrincipal />} />
         <Route path={LOGIN.LOGIN} element={<Login />} />
         <Route path={PAGINA_PRINCIPAL.NOSOTROS} element={<Nosotros />} />
+        <Route path={PAGINA_PRINCIPAL.MICUENTA} element={<MiCuenta />} />
       </Routes>
     </>
   );

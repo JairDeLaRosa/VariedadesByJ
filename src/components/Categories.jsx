@@ -11,7 +11,7 @@ export const Categories = ({
     <nav class="navbar navbar-expand-lg" style={{ background: "#ffffff" }}>
       <div class="container-fluid">
         <div class="navbar-brand" style={{width: 230}}>
-          <Seacrch />
+          <Seacrch inputSearch={inputSearch} onClickSearch={onClickSearch} setInputSearch={setInputSearch}/>
         </div>
         <button
           class="navbar-toggler"

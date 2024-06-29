@@ -83,7 +83,7 @@ const a=()=>{
           </div>
         ))}
       </div>
-      <h2 className="text-center mt-3 variedadesByJ">Ofertas</h2>
+      <h2 className="text-center mt-3 misCompras">Ofertas</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
           {products.map((produc) => (
@@ -94,7 +94,7 @@ const a=()=>{
           ))}
         </Slider>
       </div>
-      <h2 className="text-center mt-3 variedadesByJ">Mas vendidos</h2>
+      <h2 className="text-center mt-3 misCompras">Mas vendidos</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
           {products.map((produc) => (
@@ -105,7 +105,7 @@ const a=()=>{
           ))}
         </Slider>
       </div>
-      <h2 className="text-center mt-3 variedadesByJ">Papelería</h2>
+      <h2 className="text-center mt-3 misCompras">Papelería</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
           {papeleria.map((produc) => (
@@ -116,7 +116,7 @@ const a=()=>{
           ))}
         </Slider>
       </div>
-      <h2 className="text-center mt-3 variedadesByJ">Piñatería</h2>
+      <h2 className="text-center mt-3 misCompras">Piñatería</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
           {piñateria.map((produc) => (
