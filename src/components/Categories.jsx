@@ -9,9 +9,13 @@ export const Categories = ({
 }) => {
   return (
     <nav class="navbar navbar-expand-lg" style={{ background: "#ffffff" }}>
-      <div class="container-fluid">
-        <div class="navbar-brand" style={{width: 230}}>
-          <Seacrch inputSearch={inputSearch} onClickSearch={onClickSearch} setInputSearch={setInputSearch}/>
+      <div class="container">
+        <div class="navbar-brand" style={{ width: 230 }}>
+          <Seacrch
+            inputSearch={inputSearch}
+            onClickSearch={onClickSearch}
+            setInputSearch={setInputSearch}
+          />
         </div>
         <button
           class="navbar-toggler"
@@ -36,7 +40,10 @@ export const Categories = ({
                 Papelería
               </span>
               <ul class="dropdown-menu">
-                <li onClick={() => onClickCategorie("cinta")}>
+                <li
+                  onClick={() => onClickCategorie("cinta")}
+                  className="border-bottom"
+                >
                   <span class="dropdown-item li-categories">Cintas</span>
                 </li>
                 <li onClick={() => onClickCategorie("papeles")}>
@@ -56,10 +63,14 @@ export const Categories = ({
               <ul class="dropdown-menu">
                 <li
                   onClick={() => onClickCategorie("herramientas para fiestas")}
+                  className="border-bottom"
                 >
                   <span class="dropdown-item">Herramientas para fiestas</span>
                 </li>
-                <li onClick={() => onClickCategorie("globos")}>
+                <li
+                  onClick={() => onClickCategorie("globos")}
+                  className="border-bottom"
+                >
                   <span class="dropdown-item">Globos</span>
                 </li>
                 <li onClick={() => onClickCategorie("bolsas")}>

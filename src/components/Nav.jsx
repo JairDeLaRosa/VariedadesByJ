@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 export const Nav = () => {
   const navigate = useNavigate();
   return (
-    <nav class="navbar navbar-expand-md bg-nav" >
+    <nav class="navbar navbar-expand-lg bg-nav" >
       <div class="container">
         <div className="d-flex align-items-center" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
           <img
