@@ -3,9 +3,9 @@ import { StarRating } from "./StarRating";
 import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
 
-export const ModalProduct = ({product}) => {
+export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCantidad }) => {
   const precio = product.precio;
-  const [cantidad, setCantidad] = useState(1);
+
   const suma = () => {
     if (cantidad < product.unidades) {
       setCantidad(cantidad + 1);
@@ -16,13 +16,13 @@ export const ModalProduct = ({product}) => {
       setCantidad(cantidad - 1);
     }
   };
-  const tecla=(e)=>{
-    if (e.key ==='ArrowLeft'){
-      resta()
-    }else if(e.key ==='ArrowRight'){
-      suma()
+  const tecla = (e) => {
+    if (e.key === "ArrowLeft") {
+      resta();
+    } else if (e.key === "ArrowRight") {
+      suma();
     }
-  }
+  };
   const comprar = () => {
     Swal.fire({
       title: "Compra realizada",
@@ -31,8 +31,8 @@ export const ModalProduct = ({product}) => {
   };
   return (
     <>
-      <div 
-      onKeyDown={tecla}
+      <div
+        onKeyDown={tecla}
         class="modal fade"
         id="exampleModal"
         tabindex="-1"
@@ -64,15 +64,13 @@ export const ModalProduct = ({product}) => {
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">
-                        {product.nombre}
-                      </h5>
-                      <label class="card-text">
-                        {product.descripcion}
-                      </label>
+                      <h5 class="card-title">{product.nombre}</h5>
+                      <label class="card-text">{product.descripcion}</label>
                       <StarRating rating={4.5} />
                       <p class="card-text">
-                        <small class="text-body-secondary">Inventario: {product.unidades}</small>
+                        <small class="text-body-secondary">
+                          Inventario: {product.unidades}
+                        </small>
                       </p>
                       <p className="mt-2">Seleccione la cantidad</p>
                       <p className="mt-2">
@@ -101,7 +99,19 @@ export const ModalProduct = ({product}) => {
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">
+              <button
+              data-bs-dismiss="modal"
+                type="button"
+                class="btn btn-primary"
+                onClick={() =>
+                  onClickAgregarCarrito({
+                    img: product.img,
+                    nombre: product.nombre,
+                    unidades: cantidad,
+                    precio: precio*cantidad
+                  })
+                }
+              >
                 Agregar al carro
               </button>
               <button type="button" class="btn btn-success" onClick={comprar}>

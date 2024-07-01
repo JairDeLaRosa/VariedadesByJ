@@ -4,7 +4,10 @@ import { Categories } from "../components/Categories";
 import { Products } from "../components/Products";
 import { products } from "../Data/Products";
 export const PaginaPrincipal = () => {
-  const [categorie, setCategorie] = useState("");
+  const [count, setCount]=useState(0)
+  const countCart=()=>{
+    setCount(count+1)
+  }
   const [inputSearch, setInputSearch] = useState("");
   const [productsSearch, setProductsSearch] = useState(null);
   const onClickSearch = (e) => {
@@ -41,7 +44,7 @@ export const PaginaPrincipal = () => {
           data-bs-target="#exampleModal2"
           type="button"
         >
-          <span className="cartCount">0</span>
+          <span className="cartCount">{count}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="36"
@@ -61,7 +64,7 @@ export const PaginaPrincipal = () => {
           />
       
       <section className="container-fluid mb-3 mt-3">
-        <Products producsSearch={productsSearch} />
+        <Products producsSearch={productsSearch} countCart={countCart}/>
       </section>
     </>
   );

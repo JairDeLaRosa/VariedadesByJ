@@ -8,8 +8,28 @@ import { PrevArrow } from "./PrevArrow";
 import { ModalProduct } from "./ModalProduct";
 import ModalCart from "./ModalCart";
 import { products } from "../Data/Products";
+import Swal from "sweetalert2";
 
-export const Products = ({ producsSearch }) => {
+export const Products = ({ producsSearch,countCart }) => {
+  const [productsCart, setProductsCart]=useState([])
+  const [cantidad, setCantidad] = useState(1);
+  const [totalPrecio, setTotalPrecio]=useState(0)
+  const onClickAgregarCarrito=(produc)=>{
+    setProductsCart([...productsCart,produc])
+    
+    setCantidad(1)
+    countCart()
+    Swal.fire({
+      title: "Agregado correctamente",
+      icon: "success",
+    });
+  }
+  useEffect(()=>{
+    for (let index = 0; index < productsCart.length; index++) {
+      const element = productsCart[index];
+      setTotalPrecio(totalPrecio+element.precio)
+    }
+  },[productsCart])
   const [producModal,setProductModal]=useState([])
   let search = [];
   let papeleria = [];
@@ -71,8 +91,8 @@ const a=()=>{
   return (
     <>
     {a()}
-      <ModalProduct product={producModal}/>
-      <ModalCart />
+      <ModalProduct product={producModal} onClickAgregarCarrito={onClickAgregarCarrito} cantidad={cantidad} setCantidad={setCantidad}/>
+      <ModalCart productsCart={productsCart} precioTotal={totalPrecio}/>
       <div className="w-100 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {search.map((produc) => (
           <div className="col">
