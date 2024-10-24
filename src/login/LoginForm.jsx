@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 export const LoginForm = ({setInfo}) => {
     const [data,setData]=useState({
-        correo: null,
-        password: null,
+        email: null,
+        contrasena: null,
         acept: 'false'
       })
       useEffect(()=>{
@@ -15,13 +15,13 @@ export const LoginForm = ({setInfo}) => {
         <label className="form-label">
           Correo<span className="text-danger">*</span>
         </label>
-        <input type="email" className="form-control" required value={data.correo} onChange={(e)=>setData({...data,correo: e.target.value})}/>
+        <input type="email" className="form-control" required value={data.email} onChange={(e)=>setData({...data,email: e.target.value})}/>
       </div>
       <div className="text-start ms-5 me-5 mt-3">
         <label className="form-label">
           Constraseña<span className="text-danger">*</span>
         </label>
-        <input type="password" className="form-control" required value={data.password} onChange={(e)=>setData({...data,password: e.target.value})}/>
+        <input type="password" className="form-control" required value={data.contrasena} onChange={(e)=>setData({...data,contrasena: e.target.value})}/>
       </div>
       <div className="d-flex justify-content-between ms-5 me-5 mt-3">
         <div className="text-start">

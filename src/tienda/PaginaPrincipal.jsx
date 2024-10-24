@@ -63,7 +63,9 @@ export const PaginaPrincipal = () => {
             onClickCategorie={onClickCategorie}
           />
       
-      <section className="container-fluid mb-3 mt-3">
+      <section className="container mb-3 mt-3 d-flex justify-content-center" style={{flexDirection: "column",
+       alignItems: "center"
+      }}>
         <Products producsSearch={productsSearch} countCart={countCart}/>
       </section>
     </>

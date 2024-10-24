@@ -282,6 +282,7 @@ p {
   color: #ffffff;
   background-color: #008cffb7;
   border-radius: 20px;
+  width: 350px;
 }
 @media (max-width: 768px) {
   .precioCardCompra {

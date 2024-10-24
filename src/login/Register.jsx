@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 
 export const Register = ({ setInfo }) => {
   const [data, setData] = useState({
-    nombres: null,
-    apellidos: null,
+    nombre: null,
+    apellido: null,
     departamento: null,
     municipio: null,
     direccion: null,
-    correo: null,
+    email: null,
     telefono: null,
-    password: null,
+    contrasena: null,
     acept: "false",
   });
   useEffect(() => {
@@ -26,8 +26,8 @@ export const Register = ({ setInfo }) => {
             type="text"
             className="form-control"
             required
-            value={data.nombres}
-            onChange={(e) => setData({ ...data, nombres: e.target.value })}
+            value={data.nombre}
+            onChange={(e) => setData({ ...data, nombre: e.target.value })}
           />
         </div>
         <div className="ms-1">
@@ -38,8 +38,8 @@ export const Register = ({ setInfo }) => {
             type="text"
             className="form-control"
             required
-            value={data.apellidos}
-            onChange={(e) => setData({ ...data, apellidos: e.target.value })}
+            value={data.apellido}
+            onChange={(e) => setData({ ...data, apellido: e.target.value })}
           />
         </div>
       </div>
@@ -142,8 +142,8 @@ export const Register = ({ setInfo }) => {
           className="form-control"
           required
           placeholder="Ej: user@gmail.com"
-          value={data.correo}
-          onChange={(e) => setData({ ...data, correo: e.target.value })}
+          value={data.email}
+          onChange={(e) => setData({ ...data, email: e.target.value })}
         />
       </div>
       <div className="text-start ms-5 me-5 mt-3">
@@ -154,8 +154,8 @@ export const Register = ({ setInfo }) => {
           type="password"
           className="form-control"
           required
-          value={data.password}
-          onChange={(e) => setData({ ...data, password: e.target.value })}
+          value={data.contrasena}
+          onChange={(e) => setData({ ...data, contrasena: e.target.value })}
         />
       </div>
       <div className="d-flex justify-content-between ms-5 me-5 mt-4 mb-4">
