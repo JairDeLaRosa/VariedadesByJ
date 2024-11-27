@@ -19,10 +19,26 @@ export const Login = () => {
       setIsLoanding(true)
       const handleChektUser = async () => {
         try {
-          const result = await postData("check-cliente", info);
+          const result = await postData("check-usuario", info);
           if (result) {
-            setIsLoanding(false)
+            if(result.tipo=="admin"){
+              localStorage.setItem("nombre",result.nombre)
+              localStorage.setItem("apellido",result.apellido)
+              navigate("/admin");
+            }else{
+            localStorage.setItem("idCliente",result.idCliente)
+            localStorage.setItem("nombre",result.nombre)
+            localStorage.setItem("apellido",result.apellido)
+            localStorage.setItem("email",result.email)
+            localStorage.setItem("departamento",result.departamento)
+            localStorage.setItem("municipio",result.municipio)
+            localStorage.setItem("direccion",result.direccion)
+            localStorage.setItem("telefono",result.telefono)
+            localStorage.setItem("sesion",true)
             navigate("/tienda");
+            }
+            
+            setIsLoanding(false)
           }
         } catch (error) {
           setIsLoanding(false)

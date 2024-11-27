@@ -111,18 +111,13 @@ nav {
   color: inherit;
 }
 
-.cards {
-  background-color: white;
-  display: inline-block;
-  width: 90%;
-  height: 360px;
-  padding: 10px;
-  border: solid 1px #cecece;
-  border-radius: 10px;
-  cursor: pointer;
+.card{
+  width: 240px;
   transition: all 500ms;
-  &:hover {
-    box-shadow: 0 0 3px #008cff;
+  margin: 7px;
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.05);
   }
 }
 .card-img {
@@ -146,10 +141,12 @@ nav {
   color: #000000;
   font-size: 17px;
   font-weight: 600;
+  height: 35px;
   &:hover {
     text-decoration: underline;
   }
 }
+  
 .titleCardCompra {
   overflow: hidden; /* Oculta el desbordamiento del contenido */
   display: -webkit-box; /* Utiliza el modo flexbox para layout de caja */
@@ -249,7 +246,6 @@ nav {
 }
 .rating {
   font-size: 27px;
-  margin-right: 10px;
   color: #5f5f5f;
 }
 .resenas {
@@ -275,15 +271,75 @@ p {
   right: 10px;
   top: 62%;
 }
-
+.slider{
+  justify-content: center;
+  align-items: center;
+}
 .misCompras {
   font-size: 30px;
   padding: 8px 40px 10px 40px;
   color: #ffffff;
-  background-color: #008cffb7;
+  background-color: #0051ff;
   border-radius: 20px;
   width: 350px;
 }
+.sectionAdmin{
+  height: 100vh;
+  padding: 0;
+  background-color: #fe0000;
+}
+.dashboard{
+  padding: 0;
+}
+.active{
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.AgregarProducto{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+@media (max-width: 1000px) {
+  .precioCardCompra {
+    font-size: 20px;
+  }
+
+  .evaluarProduto{
+    font-size: 15px;
+  }
+  .card{
+    width: 140px;
+  }
+  .nameProduct{
+    font-size: 10px;
+  }
+  .card-img{
+    width: 138px;
+    height: 110px;
+    margin: 0;
+  }
+  .star-rating{
+    font-size: 10px;
+  }
+  .resenas{
+    font-size: 10px;
+  }
+  .price{
+    font-size: 9px;
+  }
+  .btnComprar{
+    font-size: 9px;
+    padding: 5px;
+  }
+  .nameProduct{
+    margin-bottom: 0;
+    height: 25px;
+  }
+}
+
 @media (max-width: 768px) {
   .precioCardCompra {
     font-size: 20px;
@@ -317,5 +373,9 @@ p {
     }
     .cardComprainfo{
       width: 100%;
+    }
+    .misCompras{
+      font-size: 20px;
+      width: 80vw;
     }
 }

@@ -4,10 +4,10 @@ import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
 
 export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCantidad }) => {
-  const precio = product.precio;
+  const precio = product.costo;
 
   const suma = () => {
-    if (cantidad < product.unidades) {
+    if (cantidad < product.cantidad) {
       setCantidad(cantidad + 1);
     }
   };
@@ -57,7 +57,7 @@ export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCant
                 <div class="row g-0">
                   <div class="col-md-4">
                     <img
-                      src={`../assets/${product.img}`}
+                      src="https://i.postimg.cc/tghks4G1/bolsa-De-Yute.jpg"
                       class="img-fluid rounded-start card-img-img"
                       alt="..."
                     />
@@ -69,7 +69,7 @@ export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCant
                       <StarRating rating={4.5} />
                       <p class="card-text">
                         <small class="text-body-secondary">
-                          Inventario: {product.unidades}
+                          Inventario: {product.cantidad}
                         </small>
                       </p>
                       <p className="mt-2">Seleccione la cantidad</p>
@@ -105,7 +105,7 @@ export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCant
                 class="btn btn-primary"
                 onClick={() =>
                   onClickAgregarCarrito({
-                    img: product.img,
+                    img: "https://i.postimg.cc/tghks4G1/bolsa-De-Yute.jpg",
                     nombre: product.nombre,
                     unidades: cantidad,
                     precio: precio*cantidad

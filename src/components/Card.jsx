@@ -1,25 +1,31 @@
 import React from "react";
 import { NumericFormat } from "react-number-format";
+import { StarRating } from "./StarRating";
 
 export const Card = ({ produc, onClick }) => {
   return (
-    <button
-      className="ms-3  mt-3 me-3 mb-2 cards text-center"
+    <div
+      class="card"
+      onClick={() => onClick(produc)}
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
-      type="button"
-      onClick={()=>onClick(produc)}
     >
-      <div className="card-img">
-        <img src={`../assets/${produc.img}`} alt="..." className="card-img-img"></img>{" "}
+      <div>
+      <img
+        class="card-img"
+        src={produc.imagenes[0].url}
+        alt={produc.nombre}
+      />
       </div>
-      <div className="nameProduct">
-        <span>{produc.nombre}</span>
-      </div>
-      <span>Unidades : {produc.unidades}</span>
-      <span className="card-precio mt-1">
-        <NumericFormat
-          value={produc.precio}
+
+      <div class="card-body" style={{padding: "8px"}}>
+        <h4 class="card-title nameProduct" >{produc.nombre}</h4>
+        <StarRating/>
+
+        <div class="buy d-flex justify-content-between mt-1">
+          <div class="price">
+          <NumericFormat
+          value={produc.costo}
           displayType="text"
           thousandSeparator="."
           decimalSeparator=","
@@ -27,7 +33,12 @@ export const Card = ({ produc, onClick }) => {
           decimalScale={2}
           fixedDecimalScale
         />
-      </span>
-    </button>
+          </div>
+          <a href="#" class="btn btn-success  btnComprar">
+            <i class="fas fa-shopping-cart"></i> Comprar
+          </a>
+        </div>
+      </div>
+    </div>
   );
 };

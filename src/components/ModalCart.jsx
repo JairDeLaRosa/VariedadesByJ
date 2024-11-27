@@ -30,7 +30,7 @@ export default function ModalCart({ productsCart,precioTotal }) {
                 <ProductCart product={produc} />
               ))}
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-between">
               <span className="display-6">
                 <NumericFormat
                   value={precioTotal}
@@ -42,15 +42,8 @@ export default function ModalCart({ productsCart,precioTotal }) {
                   fixedDecimalScale
                 />
               </span>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
               <button type="button" class="btn btn-primary">
-                Save changes
+                Comprar
               </button>
             </div>
           </div>

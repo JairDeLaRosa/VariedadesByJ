@@ -7,52 +7,51 @@ import { NextArrow } from "./NextArrow";
 import { PrevArrow } from "./PrevArrow";
 import { ModalProduct } from "./ModalProduct";
 import ModalCart from "./ModalCart";
-import { products } from "../Data/Products";
 import Swal from "sweetalert2";
 
-export const Products = ({ producsSearch,countCart }) => {
-  const [productsCart, setProductsCart]=useState([])
+export const Products = ({ countCart, products, producsSearch, product, loandingSearch}) => {
+  let search = [];
+  const [productsCart, setProductsCart] = useState([]);
   const [cantidad, setCantidad] = useState(1);
-  const [totalPrecio, setTotalPrecio]=useState(0)
-  const onClickAgregarCarrito=(produc)=>{
-    setProductsCart([...productsCart,produc])
-    
-    setCantidad(1)
-    countCart()
+  const [totalPrecio, setTotalPrecio] = useState(0);
+  const onClickAgregarCarrito = (produc) => {
+    setProductsCart([...productsCart, produc]);
+
+    setCantidad(1);
+    countCart();
     Swal.fire({
       title: "Agregado correctamente",
       icon: "success",
     });
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     for (let index = 0; index < productsCart.length; index++) {
       const element = productsCart[index];
-      setTotalPrecio(totalPrecio+element.precio)
+      setTotalPrecio(totalPrecio + element.precio);
     }
-  },[productsCart])
-  const [producModal,setProductModal]=useState([])
-  let search = [];
+  }, [productsCart]);
+  const [producModal, setProductModal] = useState([]);
+
   let papeleria = [];
   let piñateria = [];
-  if (producsSearch != null) {
-    search = producsSearch;
-  }
-const a=()=>{
-  for (let index = 0; index < products.length; index++) {
-    const element = products[index].tienda;
-    if (element === "papeleria") {
-      papeleria.push(products[index]);
-    } else if (element === "piñateria") {
-      piñateria.push(products[index]);
-    }
-  }
+  search = producsSearch;
 
-}
-    
-  const onClickCard=(produc)=>{
-    setProductModal(produc)
-  }
+  const a = () => {
+    for (let index = 0; index < products.length; index++) {
+      const element = products[index].categoria;
+      if (element.seccion === "Papeleria") {
+        papeleria.push(products[index]);
+      } else if (element.seccion === "Piñateria") {
+        piñateria.push(products[index]);
+      }
+    }
+  };
+
+  const onClickCard = (produc) => {
+    setProductModal(produc);
+  };
   const settings = {
+    centerMode: true,
     dots: false,
     infinite: true,
     speed: 500,
@@ -65,52 +64,82 @@ const a=()=>{
     pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 990,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 4,
           slidesToScroll: 1,
-          initialSlide: 2,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          centerPadding: "20px",
+        },
+      },
+      {
+        breakpoint: 550,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          
+        },
+      },
+      {
+        breakpoint: 420,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerPadding: "20px",
+        },
+      },
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerPadding: "40px",
         },
       },
     ],
   };
   return (
     <>
-    {a()}
-      <ModalProduct product={producModal} onClickAgregarCarrito={onClickAgregarCarrito} cantidad={cantidad} setCantidad={setCantidad}/>
-      <ModalCart productsCart={productsCart} precioTotal={totalPrecio}/>
-      <div className="w-100 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {search.map((produc) => (
-          <div className="col">
-            <Card
-              produc={produc}
-              onClick={onClickCard}
-            />
+      {a()}
+      <ModalProduct
+        product={producModal}
+        onClickAgregarCarrito={onClickAgregarCarrito}
+        cantidad={cantidad}
+        setCantidad={setCantidad}
+      />
+      <ModalCart productsCart={productsCart} precioTotal={totalPrecio} />
+      {loandingSearch?null: product==undefined?null:(<h2 className="text-center mt-3 misCompras">Search: {product}</h2>)}
+      {loandingSearch?null: search.length==0?product==undefined?null:<h2>No encontrado</h2>:(
+        <>
+          {" "}
+          
+          <div className="w-100" style={{display: "flex", flexWrap: "wrap", gap: "10", justifyContent: "center", alignItems: "center"}}>
+            {search.map((produc) => (
+              <div>
+                <Card produc={produc} onClick={onClickCard} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
       <h2 className="text-center mt-3 misCompras">Ofertas</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
           {products.map((produc) => (
-            <Card
-            produc={produc}
-            onClick={onClickCard}
-            />
+            <Card produc={produc} onClick={onClickCard} />
           ))}
         </Slider>
       </div>
@@ -118,10 +147,7 @@ const a=()=>{
       <div className="w-100">
         <Slider {...settings} className="slider">
           {products.map((produc) => (
-            <Card
-            produc={produc}
-            onClick={onClickCard}
-            />
+            <Card produc={produc} onClick={onClickCard} />
           ))}
         </Slider>
       </div>
@@ -129,10 +155,7 @@ const a=()=>{
       <div className="w-100">
         <Slider {...settings} className="slider">
           {papeleria.map((produc) => (
-            <Card
-            produc={produc}
-            onClick={onClickCard}
-            />
+            <Card produc={produc} onClick={onClickCard} />
           ))}
         </Slider>
       </div>
@@ -140,10 +163,7 @@ const a=()=>{
       <div className="w-100">
         <Slider {...settings} className="slider">
           {piñateria.map((produc) => (
-            <Card
-            produc={produc}
-            onClick={onClickCard}
-            />
+            <Card produc={produc} onClick={onClickCard} />
           ))}
         </Slider>
       </div>

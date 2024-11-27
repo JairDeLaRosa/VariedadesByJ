@@ -6,7 +6,7 @@ export const ProductCart = ({product}) => {
       <div class="d-flex">
         <div style={{width: 150}}>
           <img
-            src={`../assets/${product.img}`}
+            src="https://i.postimg.cc/tghks4G1/bolsa-De-Yute.jpg"
             class="img-fluid rounded-start card-img-img"
             alt="..."
           />

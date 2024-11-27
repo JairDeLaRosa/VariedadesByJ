@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const StarRating = ({rating}) => {
+export const StarRating = ({rating, calificaciones}) => {
     return (
         <div className="star-rating">
             <label className='rating'>{rating}</label>

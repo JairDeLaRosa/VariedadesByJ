@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const Seacrch = ({inputSearch, setInputSearch,onClickSearch}) => {
+export const Seacrch = ({setIsLoandingSearch}) => {
+  const navigate=useNavigate()
+  const onSubmit=(e)=>{
+    e.preventDefault()
+  }
+  const onChange=({target})=>{
+    setIsLoandingSearch(true)
+    const {value}=target
+    if(value==undefined){
+      navigate("/tienda")
+    }else{
+      navigate("/tienda/"+value)
+    }
+    console.log(value)
+  }
   return (
-    <form className="d-flex" onSubmit={onClickSearch}>
+    <form className="d-flex" onSubmit={onSubmit}>
       <input
         type="text"
         className="form-control"
         placeholder="Buscar producto"
-        value={inputSearch}
-        onChange={(e)=>setInputSearch(e.target.value)}
+        name="inputSearch"
+        onChange={onChange}
       />
-      <button className="btn btn-primary" onClick={onClickSearch}>
+      <button className="btn btn-primary" type="submit" >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
