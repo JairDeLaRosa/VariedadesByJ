@@ -19,6 +19,7 @@ export const AppRouter = () => {
         <Route path={ADMIN.ADMIN} element={<PanelAdmin />} />
         <Route path={PAGINA_PRINCIPAL.NOSOTROS} element={<Nosotros />} />
         <Route path={PAGINA_PRINCIPAL.MICUENTA} element={<MiCuenta />} />
+
       </Routes>
     </>
   );

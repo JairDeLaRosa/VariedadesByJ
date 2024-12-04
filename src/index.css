@@ -34,6 +34,13 @@ span {
     text-shadow: 2px 2px 3px #cecece;
   }
 }
+.hoverSelect{
+  transition: all 500ms;
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}
 .login {
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
@@ -119,6 +126,14 @@ nav {
     cursor: pointer;
     transform: scale(1.05);
   }
+}
+.priceOfert{
+  border-bottom: 1px solid black;
+  height: 13px;
+}
+.priceOfertModal{
+  border-bottom: 1px solid black;
+  height: 25px;
 }
 .card-img {
   width: 100%;
@@ -313,6 +328,7 @@ p {
   .card{
     width: 140px;
   }
+
   .nameProduct{
     font-size: 10px;
   }
@@ -347,6 +363,9 @@ p {
   .evaluarProduto{
     font-size: 15px;
   }
+  .priceOfertModal{
+    height: 22px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -377,5 +396,8 @@ p {
     .misCompras{
       font-size: 20px;
       width: 80vw;
+    }
+    .priceOfertModal{
+      height: 19px;
     }
 }

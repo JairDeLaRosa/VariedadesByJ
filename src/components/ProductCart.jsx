@@ -1,22 +1,25 @@
 import React from "react";
 import { NumericFormat } from "react-number-format";
-export const ProductCart = ({product}) => {
+export const ProductCart = ({ product, onClickQuitar }) => {
   return (
-    <div class="card h-100 mb-1">
+    <div class="h-100 ">
       <div class="d-flex">
-        <div style={{width: 150}}>
+        <div style={{ width: 150, height: 137 }}>
           <img
-            src="https://i.postimg.cc/tghks4G1/bolsa-De-Yute.jpg"
+            src={product.img}
             class="img-fluid rounded-start card-img-img"
-            alt="..."
+            alt={product.nombre}
           />
         </div>
-        <div class="w-75">
+        <div class="w-75 ms-2">
           <div class="card-body">
-            <p class="card-title"><b>{product.nombre}</b>
+            <p class="card-title d-flex" style={{justifyContent: "space-between"}}>
+              <b>{product.nombre}</b>
+              <button type="button" onClick={()=>onClickQuitar(product)} class="btn-close" aria-label="Close" ></button>
             </p>
             <p className="mt-2">Unidades {product.unidades}</p>
-            <p className="mt-2"><NumericFormat
+            <p className="mt-2">
+              <NumericFormat
                 value={product.precio}
                 displayType="text"
                 thousandSeparator="."
@@ -24,7 +27,13 @@ export const ProductCart = ({product}) => {
                 prefix={"$ "}
                 decimalScale={2}
                 fixedDecimalScale
-              /> <div className="buttos-cart"><button className="btn btn-primary me-1">Editar</button><button className="btn btn-danger">Quitar</button></div></p>
+              />
+              {" "}
+              {/* <div className="">
+                <button className="btn btn-primary me-1">Editar</button>
+                <button className="btn btn-danger">Quitar</button>
+              </div> */}
+            </p>
           </div>
         </div>
       </div>

@@ -5,12 +5,13 @@ import { fetchData } from "../functions/axios";
 import { Products } from "../components/Products";
 import { Categories } from "../components/Categories";
 import { useParams } from "react-router-dom";
+import { Fotter } from "../components/Fotter";
 export const PaginaPrincipal = () => {
-  const {product}=useParams()
+  const { product } = useParams();
   const [products, setProducts] = useState([]);
-  const [categorias, setCategorias]=useState([])
-  const [isLoanding, setIsLoanding]=useState(true);
-  const [isLoandingSearch, setIsLoandingSearch]=useState(false)
+  const [categorias, setCategorias] = useState([]);
+  const [isLoanding, setIsLoanding] = useState(true);
+  const [isLoandingSearch, setIsLoandingSearch] = useState(false);
   useEffect(() => {
     const handleCargarProductos = async () => {
       try {
@@ -18,7 +19,7 @@ export const PaginaPrincipal = () => {
         const getCategories = await fetchData("categorias");
         setCategorias(getCategories);
         setProducts(productos);
-        setIsLoanding(false)
+        setIsLoanding(false);
       } catch (err) {
         console.log(err);
       }
@@ -26,14 +27,11 @@ export const PaginaPrincipal = () => {
     handleCargarProductos();
   }, []);
   const [count, setCount] = useState(0);
-  const countCart = () => {
-    setCount(count + 1);
-  };
 
   const [productsSearch, setProductsSearch] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
     var data = [];
-    if(product!=undefined){
+    if (product != undefined) {
       for (let index = 0; index < products.length; index++) {
         const element = products[index];
         if (element.nombre.toLowerCase().includes(product.toLowerCase())) {
@@ -41,19 +39,21 @@ export const PaginaPrincipal = () => {
         }
       }
     }
-    console.log(data)
+    console.log(data);
     setProductsSearch(data);
-    setIsLoandingSearch(false)
-  },[product])
+    setIsLoandingSearch(false);
+  }, [product]);
 
   const onClickCategorie = (categorie) => {
     var data = [];
-      for (let index = 0; index < products.length; index++) {
-        const element = products[index];
-        if (element.categoria.nombre.toLowerCase().includes(categorie.toLowerCase())) {
-          data.push(element);
-        }
-      } 
+    for (let index = 0; index < products.length; index++) {
+      const element = products[index];
+      if (
+        element.categoria.nombre.toLowerCase().includes(categorie.toLowerCase())
+      ) {
+        data.push(element);
+      }
+    }
     setProductsSearch(data);
   };
   return (
@@ -79,18 +79,30 @@ export const PaginaPrincipal = () => {
         </svg>
       </button>
       <Categories
-            onClickCategorie={onClickCategorie}
-            categories={categorias}
-            setIsLoandingSearch={setIsLoandingSearch}
-          />
+        onClickCategorie={onClickCategorie}
+        categories={categorias}
+        setIsLoandingSearch={setIsLoandingSearch}
+      />
 
       <section
         className="container mb-3 mt-3 d-flex justify-content-center"
         style={{ flexDirection: "column", alignItems: "center" }}
       >
-        {isLoanding ? (<h2>Is loaning...</h2>):(<Products loandingSearch={isLoandingSearch} countCart={countCart} products={products} producsSearch={productsSearch} product={product}/>)}
-        
+        {isLoanding ? (
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        ) : (
+          <Products
+            loandingSearch={isLoandingSearch}
+            countCart={setCount}
+            products={products}
+            producsSearch={productsSearch}
+            product={product}
+          />
+        )}
       </section>
+      <Fotter />
     </>
   );
 };

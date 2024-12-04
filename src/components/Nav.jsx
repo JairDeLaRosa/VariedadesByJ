@@ -76,7 +76,7 @@ export const Nav = ({ sesion }) => {
               <li class="nav-item">
                 <span
                   className="d-flex align-items-center hover nav-link nav-it"
-                  onClick={() => navigate("/nosotros")}
+                  // onClick={() => navigate("/nosotros")}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ export const Nav = ({ sesion }) => {
               <li class="nav-item">
                 <span
                   className="d-flex align-items-center hover nav-link nav-it"
-                  onClick={() => navigate("/perfil")}
+                  // onClick={() => navigate("/perfil")}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

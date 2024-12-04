@@ -16,21 +16,37 @@ export const Products = ({ countCart, products, producsSearch, product, loanding
   const [totalPrecio, setTotalPrecio] = useState(0);
   const onClickAgregarCarrito = (produc) => {
     setProductsCart([...productsCart, produc]);
-
     setCantidad(1);
-    countCart();
     Swal.fire({
       title: "Agregado correctamente",
       icon: "success",
     });
   };
   useEffect(() => {
+    console.log(productsCart)
+    let total=0;
     for (let index = 0; index < productsCart.length; index++) {
-      const element = productsCart[index];
-      setTotalPrecio(totalPrecio + element.precio);
+      let element = productsCart[index];
+      total=total+ element.precio
     }
+    countCart(productsCart.length)
+    setTotalPrecio(total);
   }, [productsCart]);
-  const [producModal, setProductModal] = useState([]);
+  const [producModal, setProductModal] = useState({"idProducto": null,
+        "nombre": null,
+        "cantidad": null,
+        "costo": null,
+        "descripcion": null,
+        "costoOferta": null,
+        "detalleCompras": [],
+        "imagenes": [
+            {
+                "idImagen": null,
+                "url": null
+            }
+        ],
+        "calificaciones": []
+      });
 
   let papeleria = [];
   let piñateria = [];
@@ -120,7 +136,7 @@ export const Products = ({ countCart, products, producsSearch, product, loanding
         cantidad={cantidad}
         setCantidad={setCantidad}
       />
-      <ModalCart productsCart={productsCart} precioTotal={totalPrecio} />
+      <ModalCart productsCart={productsCart} precioTotal={totalPrecio} setProductsCart={setProductsCart}/>
       {loandingSearch?null: product==undefined?null:(<h2 className="text-center mt-3 misCompras">Search: {product}</h2>)}
       {loandingSearch?null: search.length==0?product==undefined?null:<h2>No encontrado</h2>:(
         <>
@@ -138,15 +154,7 @@ export const Products = ({ countCart, products, producsSearch, product, loanding
       <h2 className="text-center mt-3 misCompras">Ofertas</h2>
       <div className="w-100">
         <Slider {...settings} className="slider">
-          {products.map((produc) => (
-            <Card produc={produc} onClick={onClickCard} />
-          ))}
-        </Slider>
-      </div>
-      <h2 className="text-center mt-3 misCompras">Mas vendidos</h2>
-      <div className="w-100">
-        <Slider {...settings} className="slider">
-          {products.map((produc) => (
+          {products.map((produc) => produc.costoOferta==null?null:(
             <Card produc={produc} onClick={onClickCard} />
           ))}
         </Slider>

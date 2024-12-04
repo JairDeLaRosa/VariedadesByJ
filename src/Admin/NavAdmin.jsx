@@ -3,43 +3,43 @@ import { useNavigate } from "react-router-dom";
 export const NavAdmin = ({menu, setMenu}) => {
   const [active, setActive]=useState({
     dashboard: "d-flex align-items-center hover nav-link nav-it active",
-    addProduct: "d-flex align-items-center hover nav-link nav-it",
-    addCategoria: "d-flex align-items-center hover nav-link nav-it"
+    productos: "d-flex align-items-center hover nav-link nav-it",
+    categorias: "d-flex align-items-center hover nav-link nav-it"
   })
   const onCLickDashboard=()=>{
     setActive({
     dashboard: "d-flex align-items-center hover nav-link nav-it active",
-    addProduct: "d-flex align-items-center hover nav-link nav-it",
-    addCategoria: "d-flex align-items-center hover nav-link nav-it"
+    productos: "d-flex align-items-center hover nav-link nav-it",
+    categorias: "d-flex align-items-center hover nav-link nav-it"
     })
     setMenu({
       dashboard: true,
-    addProducts: false,
-    addCategoria: false
+    productos: false,
+    categorias: false
     })
   }
   const onCLickAddProduct=()=>{
     setActive({
       dashboard: "d-flex align-items-center hover nav-link nav-it",
-      addProduct: "d-flex align-items-center hover nav-link nav-it active",
-      addCategoria: "d-flex align-items-center hover nav-link nav-it"
+      productos: "d-flex align-items-center hover nav-link nav-it active",
+      categorias: "d-flex align-items-center hover nav-link nav-it"
     })
     setMenu({
       dashboard: false,
-    addProducts: true,
-    addCategoria: false
+    productos: true,
+    categorias: false
     })
   }
-  const onCLickAddCategoria=()=>{
+  const onCLickcategorias=()=>{
     setActive({
       dashboard: "d-flex align-items-center hover nav-link nav-it",
-      addProduct: "d-flex align-items-center hover nav-link nav-it",
-      addCategoria: "d-flex align-items-center hover nav-link nav-it active"
+      productos: "d-flex align-items-center hover nav-link nav-it",
+      categorias: "d-flex align-items-center hover nav-link nav-it active"
     })
     setMenu({
       dashboard: false,
-    addProducts: false,
-    addCategoria: true
+    productos: false,
+    categorias: true
     })
   }
   const navigate = useNavigate();
@@ -107,13 +107,13 @@ export const NavAdmin = ({menu, setMenu}) => {
                   >
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
                   </svg>
-                  Dashboard
+                  Compras
                 </span>
               </li>
 
               <li class="nav-item">
                 <span
-                  className={active.addProduct}
+                  className={active.productos}
                   onClick={() => onCLickAddProduct()}
                 >
                   <svg
@@ -131,8 +131,8 @@ export const NavAdmin = ({menu, setMenu}) => {
               </li>
               <li class="nav-item">
                 <span
-                  className={active.addCategoria}
-                  onClick={() => onCLickAddCategoria()}
+                  className={active.categorias}
+                  onClick={() => onCLickcategorias()}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

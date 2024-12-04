@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StarRating } from "./StarRating";
 import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
 
-export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCantidad }) => {
+export const ModalProduct = ({
+  product,
+  onClickAgregarCarrito,
+  cantidad,
+  setCantidad,
+}) => {
   const precio = product.costo;
-
   const suma = () => {
     if (cantidad < product.cantidad) {
       setCantidad(cantidad + 1);
@@ -25,7 +29,7 @@ export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCant
   };
   const comprar = () => {
     Swal.fire({
-      title: "Compra realizada",
+      title: "Todavía no está dosponible esta opcion.",
       icon: "success",
     });
   };
@@ -53,19 +57,21 @@ export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCant
               ></button>
             </div>
             <div class="modal-body d-flex justify-content-center">
-              <div class="card h-100" style={{ maxWidth: 770 }}>
-                <div class="row g-0">
-                  <div class="col-md-4">
+              <div class="h-100" style={{ maxWidth: 770 }}>
+                <div class="row g-3">
+                  <div class="col-md-5">
                     <img
-                      src="https://i.postimg.cc/tghks4G1/bolsa-De-Yute.jpg"
+                      src={product.imagenes[0].url}
                       class="img-fluid rounded-start card-img-img"
-                      alt="..."
+                      alt={product.nombre}
                     />
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <div class="card-body">
                       <h5 class="card-title">{product.nombre}</h5>
+                      <br />
                       <label class="card-text">{product.descripcion}</label>
+                      <br />
                       <StarRating rating={4.5} />
                       <p class="card-text">
                         <small class="text-body-secondary">
@@ -82,7 +88,19 @@ export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCant
                           +
                         </button>
                       </p>
-                      <label className="display-6 model-precio">
+                      <label className="display-6 model-precio d-flex flex-column gap-4">
+                        
+                        <div className="priceOfertModal">
+                          <NumericFormat 
+                            value="11000"
+                            displayType="text"
+                            thousandSeparator="."
+                            decimalSeparator=","
+                            prefix={"$ "}
+                            decimalScale={2}
+                            fixedDecimalScale
+                          />
+                        </div>
                         <NumericFormat
                           value={precio * cantidad}
                           displayType="text"
@@ -100,22 +118,22 @@ export const ModalProduct = ({ product, onClickAgregarCarrito, cantidad, setCant
             </div>
             <div class="modal-footer">
               <button
-              data-bs-dismiss="modal"
+                data-bs-dismiss="modal"
                 type="button"
                 class="btn btn-primary"
                 onClick={() =>
                   onClickAgregarCarrito({
-                    img: "https://i.postimg.cc/tghks4G1/bolsa-De-Yute.jpg",
+                    img: product.imagenes[0].url,
                     nombre: product.nombre,
                     unidades: cantidad,
-                    precio: precio*cantidad
+                    precio: precio * cantidad,
                   })
                 }
               >
                 Agregar al carro
               </button>
               <button type="button" class="btn btn-success" onClick={comprar}>
-                Comprar
+                Pedir por wahasapp
               </button>
             </div>
           </div>
