@@ -8,7 +8,7 @@ export default function ModalCart({ productsCart,precioTotal,setProductsCart }) 
   const comprar = () => {
     Swal.fire({
       title: "Todavía no está dosponible esta opcion.",
-      icon: "success",
+      icon: "warning",
     });
   };
   const onClickQuitar=(producto)=>{

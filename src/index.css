@@ -128,11 +128,11 @@ nav {
   }
 }
 .priceOfert{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(49, 49, 49);
   height: 13px;
 }
 .priceOfertModal{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(49, 49, 49);
   height: 25px;
 }
 .card-img {
@@ -156,7 +156,7 @@ nav {
   color: #000000;
   font-size: 17px;
   font-weight: 600;
-  height: 35px;
+  height: 37px;
   &:hover {
     text-decoration: underline;
   }
@@ -297,7 +297,9 @@ p {
   background-color: #0051ff;
   border-radius: 20px;
   width: 350px;
+  z-index: 100;
 }
+
 .sectionAdmin{
   height: 100vh;
   padding: 0;
@@ -354,6 +356,9 @@ p {
     margin-bottom: 0;
     height: 25px;
   }
+  .priceOfert{
+    height: 7px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -369,6 +374,9 @@ p {
 }
 
 @media (max-width: 480px) {
+  .priceModal{
+    font-size: 22px;
+  }
 
   .imgCardCompra{
     width: 100%;

@@ -3,12 +3,17 @@ import {NavAdmin} from "./NavAdmin.jsx"
 import { Compras } from './Compras.jsx'
 import { Productos } from './Productos.jsx'
 import { Categorias } from './Categorias.jsx'
-import { AddProduct } from './AddProduct.jsx'
-import { AgregarCategoria } from './AgregarCategoria.jsx'
-import { Route, Routes } from 'react-router-dom'
-import { ADMIN } from '../router/Router.js'
+import { useNavigate } from 'react-router-dom'
+import { LOGIN } from '../router/Router.js'
+
 
 export const PanelAdmin = () => {
+  const navigate=useNavigate()
+  useEffect(()=>{
+    if(localStorage.getItem("tipoUsuario")!="admin"){
+      navigate(LOGIN.LOGIN)
+    }
+  },[])
   const [menu, setMenu]=useState({
     dashboard: true,
     productos: false,

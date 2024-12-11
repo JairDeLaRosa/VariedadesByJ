@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StarRating } from "./StarRating";
 import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
+import { sesion } from "../functions/Sesion";
 
 export const ModalProduct = ({
   product,
@@ -9,7 +10,31 @@ export const ModalProduct = ({
   cantidad,
   setCantidad,
 }) => {
-  const precio = product.costo;
+  const onClickAgregarAlCarro=()=>{
+    if(sesion()){
+      if(product.costoOferta==null){
+        onClickAgregarCarrito({
+          img: product.imagenes[0].url,
+          nombre: product.nombre,
+          unidades: cantidad,
+          precio: product.costo * cantidad,
+        })
+      }else{
+        onClickAgregarCarrito({
+          img: product.imagenes[0].url,
+          nombre: product.nombre,
+          unidades: cantidad,
+          precio: product.costoOferta * cantidad,
+        })
+      }
+    }else{
+      Swal.fire({
+        title: "Necesitas iniciar sesión primero",
+        icon: "warning",
+      });
+    }
+    
+  }
   const suma = () => {
     if (cantidad < product.cantidad) {
       setCantidad(cantidad + 1);
@@ -30,7 +55,7 @@ export const ModalProduct = ({
   const comprar = () => {
     Swal.fire({
       title: "Todavía no está dosponible esta opcion.",
-      icon: "success",
+      icon: "warning",
     });
   };
   return (
@@ -89,27 +114,45 @@ export const ModalProduct = ({
                         </button>
                       </p>
                       <label className="display-6 model-precio d-flex flex-column gap-4">
-                        
-                        <div className="priceOfertModal">
-                          <NumericFormat 
-                            value="11000"
-                            displayType="text"
-                            thousandSeparator="."
-                            decimalSeparator=","
-                            prefix={"$ "}
-                            decimalScale={2}
-                            fixedDecimalScale
-                          />
-                        </div>
-                        <NumericFormat
-                          value={precio * cantidad}
-                          displayType="text"
-                          thousandSeparator="."
-                          decimalSeparator=","
-                          prefix={"$ "}
-                          decimalScale={2}
-                          fixedDecimalScale
-                        />
+                        {product.costoOferta != null ? (
+                          <>
+                            <div className="priceOfertModal">
+                              <NumericFormat
+                                className="priceModal"
+                                value={product.costo * cantidad}
+                                displayType="text"
+                                thousandSeparator="."
+                                decimalSeparator=","
+                                prefix={"$ "}
+                                decimalScale={2}
+                                fixedDecimalScale
+                              />
+                            </div>
+                            <NumericFormat
+                            className="priceModal"
+                              value={product.costoOferta *cantidad}
+                              displayType="text"
+                              thousandSeparator="."
+                              decimalSeparator=","
+                              prefix={"$ "}
+                              decimalScale={2}
+                              fixedDecimalScale
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <NumericFormat
+                            className="priceModal"
+                              value={product.costo * cantidad}
+                              displayType="text"
+                              thousandSeparator="."
+                              decimalSeparator=","
+                              prefix={"$ "}
+                              decimalScale={2}
+                              fixedDecimalScale
+                            />
+                          </>
+                        )}
                       </label>
                     </div>
                   </div>
@@ -122,12 +165,7 @@ export const ModalProduct = ({
                 type="button"
                 class="btn btn-primary"
                 onClick={() =>
-                  onClickAgregarCarrito({
-                    img: product.imagenes[0].url,
-                    nombre: product.nombre,
-                    unidades: cantidad,
-                    precio: precio * cantidad,
-                  })
+                  onClickAgregarAlCarro()
                 }
               >
                 Agregar al carro

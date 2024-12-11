@@ -4,10 +4,11 @@ import { Nav } from "../components/Nav";
 import { fetchData } from "../functions/axios";
 import { Products } from "../components/Products";
 import { Categories } from "../components/Categories";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Fotter } from "../components/Fotter";
 export const PaginaPrincipal = () => {
-  const { product } = useParams();
+  const navigate=useNavigate()
+  const { product, categoria } = useParams();
   const [products, setProducts] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [isLoanding, setIsLoanding] = useState(true);
@@ -17,7 +18,7 @@ export const PaginaPrincipal = () => {
       try {
         const productos = await fetchData("productos");
         const getCategories = await fetchData("categorias");
-        setCategorias(getCategories);
+        setCategorias(getCategories); 
         setProducts(productos);
         setIsLoanding(false);
       } catch (err) {
@@ -26,6 +27,21 @@ export const PaginaPrincipal = () => {
     };
     handleCargarProductos();
   }, []);
+  useEffect(()=>{
+    console.log(categoria)
+    var data=[]
+    if (categoria != undefined) {
+      for (let index = 0; index < products.length; index++) {
+        const element = products[index];
+        element.categoria.nombre
+        if (element.categoria.nombre==categoria) {
+          data.push(element);
+        }
+      }
+    }
+    console.log(data)
+    setProductsSearch(data);
+  },[categoria])
   const [count, setCount] = useState(0);
 
   const [productsSearch, setProductsSearch] = useState([]);
@@ -45,16 +61,8 @@ export const PaginaPrincipal = () => {
   }, [product]);
 
   const onClickCategorie = (categorie) => {
-    var data = [];
-    for (let index = 0; index < products.length; index++) {
-      const element = products[index];
-      if (
-        element.categoria.nombre.toLowerCase().includes(categorie.toLowerCase())
-      ) {
-        data.push(element);
-      }
-    }
-    setProductsSearch(data);
+    navigate("/tienda/categoria/"+categorie)
+    
   };
   return (
     <>

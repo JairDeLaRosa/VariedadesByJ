@@ -5,7 +5,7 @@ import { CardCompra } from "../components/CardCompra";
 export const MiCuenta = () => {
   return (
     <>
-      <Nav />
+      <Nav sesion={localStorage.getItem("sesion")}/>
       <section className="container mb-3 mt-3 d-flex justify-content-center flex-column align-items-center">
         <div
           className="container bg-white d-flex p-2"
@@ -26,12 +26,12 @@ export const MiCuenta = () => {
               <div>
                 <span className="display-6">
                   {" "}
-                  <em>Jair De La Rosa </em>
+                  <em>{localStorage.getItem("nombre")}</em>
                 </span>
               </div>
               <div className="d-flex justify-content-between">
                 <span className="">
-                  <em>Jair@gmail.com </em>{" "}
+                  <em>{localStorage.getItem("email")}</em>{" "}
                 </span>{" "}
                 <span className="hover text-end" style={{ width: 100 }}>
                   <em>
@@ -51,12 +51,12 @@ export const MiCuenta = () => {
           </h3>
         </div>
 
-        <div className="container bg-white d-flex flex-column justify-content-center pb-1" style={{ maxWidth: 800 }}>
+        {/* <div className="container bg-white d-flex flex-column justify-content-center pb-1" style={{ maxWidth: 800 }}>
           <CardCompra/>
           <CardCompra/>
           <CardCompra/>
           <CardCompra/>
-        </div>
+        </div> */}
       </section>
     </>
   );

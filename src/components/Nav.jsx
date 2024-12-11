@@ -1,21 +1,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 export const Nav = ({ sesion }) => {
   const navigate = useNavigate();
-  const onSalir=()=>{
-    localStorage.clear()
-    navigate("/login")
+  const onSalir = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+  const navigatePerfil=()=>{
+    if(localStorage.length==0){
+      Swal.fire("Necesitas iniciar sesión primero");
+    }else{
+      navigate("/perfil")
+    }
   }
   return (
     <nav class="navbar navbar-expand-lg bg-nav">
       <div class="container">
         <div
           className="d-flex align-items-center"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/tienda")}
           style={{ cursor: "pointer" }}
         >
           <img
-            src={"../assets/logo.jpg"}
+            src="https://res.cloudinary.com/dlcpmfog9/image/upload/v1733438630/logo_smussk.jpg"
             alt="Logo"
             width={60}
             className="mt-2 mb-2"
@@ -74,28 +82,27 @@ export const Nav = ({ sesion }) => {
                 </a>
               </li>
               <li class="nav-item">
-                <span
-                  className="d-flex align-items-center hover nav-link nav-it"
-                  // onClick={() => navigate("/nosotros")}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="26"
-                    height="26"
-                    fill="currentColor"
-                    className="bi bi-info"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                  </svg>
-                  Nosotros
-                </span>
+                <a href="#nosotros" rel="noopener noreferrer" className="link ">
+                  <span className="d-flex align-items-center hover nav-link nav-it">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="26"
+                      height="26"
+                      fill="currentColor"
+                      className="bi bi-info"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                    Nosotros
+                  </span>
+                </a>
               </li>
 
               <li class="nav-item">
                 <span
                   className="d-flex align-items-center hover nav-link nav-it"
-                  // onClick={() => navigate("/perfil")}
+                  onClick={() => navigatePerfil()}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +119,10 @@ export const Nav = ({ sesion }) => {
               </li>
               <li class="nav-item">
                 {sesion ? (
-                  <span className="d-flex align-items-center hover nav-link nav-it" onClick={()=>onSalir()}>
+                  <span
+                    className="d-flex align-items-center hover nav-link nav-it"
+                    onClick={() => onSalir()}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"

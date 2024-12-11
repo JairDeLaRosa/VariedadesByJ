@@ -53,6 +53,7 @@ export const Products = ({ countCart, products, producsSearch, product, loanding
   search = producsSearch;
 
   const a = () => {
+    console.log(products)
     for (let index = 0; index < products.length; index++) {
       const element = products[index].categoria;
       if (element.seccion === "Papeleria") {
@@ -64,7 +65,7 @@ export const Products = ({ countCart, products, producsSearch, product, loanding
   };
 
   const onClickCard = (produc) => {
-    setProductModal(produc);
+      setProductModal(produc);
   };
   const settings = {
     centerMode: true,
