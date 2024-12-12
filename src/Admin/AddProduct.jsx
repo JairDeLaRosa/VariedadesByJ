@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchData, postData } from "../functions/axios";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const AddProduct = ({ setVisible, visible }) => {
   const [checkOferta, setCheckOferta] = useState(false);
@@ -63,7 +64,10 @@ export const AddProduct = ({ setVisible, visible }) => {
       );
       console.log(response.data);
       if (response.data) {
-        alert("Ingresado correctamente");
+        Swal.fire({
+          title: "Agregado correctamente",
+          icon: "success",
+        });
       }
     } catch (error) {
       console.log(error);

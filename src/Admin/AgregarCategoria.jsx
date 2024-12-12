@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { capitalizeFirstLetter } from "../functions/funciones";
 import { postData } from "../functions/axios";
+import Swal from "sweetalert2";
 
 export const AgregarCategoria = ({ setVisible, visible }) => {
   const [categoria, setCategoria] = useState({
@@ -11,7 +12,10 @@ export const AgregarCategoria = ({ setVisible, visible }) => {
     try {
       const result = await postData("categoria", categoria);
       if (result) {
-        alert("Agregada correctamente");
+        Swal.fire({
+          title: "Agregado correctamente",
+          icon: "success",
+        });
       }
     } catch (error) {
       console.log(error);

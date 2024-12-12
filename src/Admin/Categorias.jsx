@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AgregarCategoria } from './AgregarCategoria'
 
+
 export const Categorias = () => {
   const [visible, setVisible]=useState({
     menu: true,
