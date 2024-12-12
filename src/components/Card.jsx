@@ -24,35 +24,49 @@ export const Card = ({ produc, onClick }) => {
 
         <div class="buy d-flex justify-content-between mt-1">
           <div class="price d-flex flex-column gap-2">
-            {produc.costoOferta==null?null:<div className="priceOfert">
-              <NumericFormat
-              
-                value={produc.costoOferta}
-                displayType="text"
-                thousandSeparator="."
-                decimalSeparator=","
-                prefix={"$ "}
-                decimalScale={2}
-                fixedDecimalScale
-              />
-            </div>}
-            
-            <div>
-              <NumericFormat
-                value={produc.costo}
-                displayType="text"
-                thousandSeparator="."
-                decimalSeparator=","
-                prefix={"$ "}
-                decimalScale={2}
-                fixedDecimalScale
-              />
-            </div>
+            {produc.costoOferta == null ? (
+              <div>
+                <NumericFormat
+                  value={produc.costo}
+                  displayType="text"
+                  thousandSeparator="."
+                  decimalSeparator=","
+                  prefix={"$ "}
+                  decimalScale={2}
+                  fixedDecimalScale
+                />
+              </div>
+            ) : (
+              <>
+                <div className="priceOfert">
+                  <NumericFormat
+                    value={produc.costo}
+                    displayType="text"
+                    thousandSeparator="."
+                    decimalSeparator=","
+                    prefix={"$ "}
+                    decimalScale={2}
+                    fixedDecimalScale
+                  />
+                </div>
+                <div>
+                  <NumericFormat
+                    value={produc.costoOferta}
+                    displayType="text"
+                    thousandSeparator="."
+                    decimalSeparator=","
+                    prefix={"$ "}
+                    decimalScale={2}
+                    fixedDecimalScale
+                  />
+                </div>
+              </>
+            )}
           </div>
           <div>
-          <a href="#" class="btn btn-success  btnComprar">
-            <i class="fas fa-shopping-cart"></i> Obtener
-          </a>
+            <a href="#" class="btn btn-success  btnComprar">
+              <i class="fas fa-shopping-cart"></i> Obtener
+            </a>
           </div>
         </div>
       </div>
