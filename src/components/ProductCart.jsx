@@ -28,11 +28,6 @@ export const ProductCart = ({ product, onClickQuitar }) => {
                 decimalScale={2}
                 fixedDecimalScale
               />
-              {" "}
-              {/* <div className="">
-                <button className="btn btn-primary me-1">Editar</button>
-                <button className="btn btn-danger">Quitar</button>
-              </div> */}
             </p>
           </div>
         </div>

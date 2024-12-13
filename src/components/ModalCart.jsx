@@ -6,8 +6,20 @@ import Swal from "sweetalert2";
 export default function ModalCart({ productsCart,precioTotal,setProductsCart }) {
   
   const comprar = () => {
+    let mensaje="Hola, quiero comprar los siguientes productos:"
+    if(productos.length!=0){
+      productsCart.forEach(produto=>{
+        mensaje+=`
+        ${produto.nombre}
+        Cantidad: ${produto.unidades}
+        Precio: $${produto.precio}
+        \n
+        `
+      })
+      mensaje+=`Precio total: $${precioTotal}`
+    }
     Swal.fire({
-      title: "Todavía no está dosponible esta opcion.",
+      title: mensaje,
       icon: "warning",
     });
   };
