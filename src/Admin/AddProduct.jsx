@@ -51,7 +51,7 @@ export const AddProduct = ({ setVisible, visible }) => {
         formData.append("files", images.files[i]);
       }
       const response = await axios.post(
-        "http://localhost:8080/byj/imagenesProductos",
+        "https://apirest-variedadesbyj.onrender.com/byj/imagenesProductos",
         formData,
         {
           headers: {
