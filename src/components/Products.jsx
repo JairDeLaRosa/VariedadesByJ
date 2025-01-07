@@ -23,7 +23,6 @@ export const Products = ({ countCart, products, producsSearch, product, loanding
     });
   };
   useEffect(() => {
-    console.log(productsCart)
     let total=0;
     for (let index = 0; index < productsCart.length; index++) {
       let element = productsCart[index];
@@ -53,7 +52,6 @@ export const Products = ({ countCart, products, producsSearch, product, loanding
   search = producsSearch;
 
   const a = () => {
-    console.log(products)
     for (let index = 0; index < products.length; index++) {
       const element = products[index].categoria;
       if (element.seccion === "Papeleria") {

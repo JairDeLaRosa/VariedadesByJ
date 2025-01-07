@@ -8,10 +8,11 @@ export const Nav = ({ sesion }) => {
     navigate("/login");
   };
   const navigatePerfil=()=>{
-    if(localStorage.length==0){
-      Swal.fire("Necesitas iniciar sesión primero");
-    }else{
+    if(sesion){
       navigate("/perfil")
+      
+    }else{
+      Swal.fire("Necesitas iniciar sesión primero");
     }
   }
   return (
@@ -29,7 +30,7 @@ export const Nav = ({ sesion }) => {
             className="mt-2 mb-2"
           />{" "}
           <div className="variedadesByJTitle">
-            <em>Variedades y Piñatería B y J</em>{" "}
+            <em>Variedades y Piñatería B y J</em>
           </div>
         </div>
         <button

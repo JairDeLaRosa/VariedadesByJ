@@ -15,7 +15,6 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form) {
-      console.log("Fomulario de Login");
       setIsLoanding(true);
       const handleChektUser = async () => {
         try {
@@ -27,6 +26,7 @@ export const Login = () => {
               localStorage.setItem("apellido", result.apellido);
               navigate("/admin");
             } else {
+              localStorage.setItem("tipoUsuario", result.tipo);
               localStorage.setItem("idCliente", result.idCliente);
               localStorage.setItem("nombre", result.nombre);
               localStorage.setItem("apellido", result.apellido);
@@ -72,9 +72,7 @@ export const Login = () => {
         }
       };
       handleChektUser();
-      console.log(info);
     } else {
-      console.log("Formulario de Registro");
       setIsLoanding(true);
       const handleAdd = async () => {
         try {
@@ -90,7 +88,6 @@ export const Login = () => {
             setLogin("col login ms-4 me-4 select");
             setRegister("col login  ms-4 me-4");
           }
-          console.log(result);
         } catch (error) {
           setIsLoanding(false);
           Swal.fire({
@@ -102,7 +99,6 @@ export const Login = () => {
         }
       };
       handleAdd();
-      console.log(info);
     }
   };
   return (

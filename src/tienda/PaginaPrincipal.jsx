@@ -28,7 +28,6 @@ export const PaginaPrincipal = () => {
     handleCargarProductos();
   }, []);
   useEffect(()=>{
-    console.log(categoria)
     var data=[]
     if (categoria != undefined) {
       for (let index = 0; index < products.length; index++) {
@@ -39,7 +38,6 @@ export const PaginaPrincipal = () => {
         }
       }
     }
-    console.log(data)
     setProductsSearch(data);
   },[categoria])
   const [count, setCount] = useState(0);
@@ -55,7 +53,6 @@ export const PaginaPrincipal = () => {
         }
       }
     }
-    console.log(data);
     setProductsSearch(data);
     setIsLoandingSearch(false);
   }, [product]);

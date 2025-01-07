@@ -10,31 +10,31 @@ export const ModalProduct = ({
   cantidad,
   setCantidad,
 }) => {
-  const onClickAgregarAlCarro=()=>{
-    if(sesion()){
-      if(product.costoOferta==null){
+  const onClickAgregarAlCarro = () => {
+    if (localStorage.getItem("sesion")) {
+      if (product.costoOferta == null) {
         onClickAgregarCarrito({
           img: product.imagenes[0].url,
           nombre: product.nombre,
           unidades: cantidad,
           precio: product.costo * cantidad,
-        })
-      }else{
+        });
+      } else {
         onClickAgregarCarrito({
           img: product.imagenes[0].url,
           nombre: product.nombre,
           unidades: cantidad,
           precio: product.costoOferta * cantidad,
-        })
+        });
       }
-    }else{
+    } else {
       Swal.fire({
         title: "Necesitas iniciar sesión primero",
         icon: "warning",
       });
+      setCantidad(1)
     }
-    
-  }
+  };
   const suma = () => {
     if (cantidad < product.cantidad) {
       setCantidad(cantidad + 1);
@@ -53,10 +53,35 @@ export const ModalProduct = ({
     }
   };
   const comprar = () => {
+    if(localStorage.getItem("sesion")){
+      let mensaje = "Hola, quiero comprar este producto:";
+    if (product.costoOferta == null) {
+      mensaje += `
+      * ${product.nombre}
+        Cantidad: ${cantidad}
+        Precio: $${(product.costo * cantidad)}
+        `;
+    }else{
+      mensaje += `
+      * ${product.nombre}
+        Cantidad: ${cantidad}
+        Precio: $${(product.costoOferta * cantidad)}
+        `;
+    }
+    const url = `https://wa.me/3008021971?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+    setCantidad(1)
     Swal.fire({
-      title: "Todavía no está dosponible esta opcion.",
-      icon: "warning",
+      title: "Pedido realizado",
+      icon: "success",
     });
+    }else{
+      setCantidad(1)
+      Swal.fire({
+        title: "Necesitas iniciar sesión primero",
+        icon: "warning",
+      });
+    }
   };
   return (
     <>
@@ -129,8 +154,8 @@ export const ModalProduct = ({
                               />
                             </div>
                             <NumericFormat
-                            className="priceModal"
-                              value={product.costoOferta *cantidad}
+                              className="priceModal"
+                              value={product.costoOferta * cantidad}
                               displayType="text"
                               thousandSeparator="."
                               decimalSeparator=","
@@ -142,7 +167,7 @@ export const ModalProduct = ({
                         ) : (
                           <>
                             <NumericFormat
-                            className="priceModal"
+                              className="priceModal"
                               value={product.costo * cantidad}
                               displayType="text"
                               thousandSeparator="."
@@ -164,9 +189,7 @@ export const ModalProduct = ({
                 data-bs-dismiss="modal"
                 type="button"
                 class="btn btn-primary"
-                onClick={() =>
-                  onClickAgregarAlCarro()
-                }
+                onClick={() => onClickAgregarAlCarro()}
               >
                 Agregar al carro
               </button>

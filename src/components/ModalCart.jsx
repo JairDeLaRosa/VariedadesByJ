@@ -7,20 +7,22 @@ export default function ModalCart({ productsCart,precioTotal,setProductsCart }) 
   
   const comprar = () => {
     let mensaje="Hola, quiero comprar los siguientes productos:"
-    if(productos.length!=0){
+    if(productsCart.length!=0){
       productsCart.forEach(produto=>{
         mensaje+=`
-        ${produto.nombre}
+      * ${produto.nombre}
         Cantidad: ${produto.unidades}
         Precio: $${produto.precio}
-        \n
         `
       })
-      mensaje+=`Precio total: $${precioTotal}`
+      mensaje+=`
+      Precio total: $${precioTotal}`
     }
+    const url=`https://wa.me/3008021971?text=${encodeURIComponent(mensaje)}`
+    window.open(url,"_blank")
     Swal.fire({
-      title: mensaje,
-      icon: "warning",
+      title: "Pedido realizado",
+      icon: "success",
     });
   };
   const onClickQuitar=(producto)=>{

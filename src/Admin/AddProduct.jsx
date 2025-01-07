@@ -7,12 +7,12 @@ export const AddProduct = ({ setVisible, visible }) => {
   const [checkOferta, setCheckOferta] = useState(false);
   const [categorias, setCategorias] = useState([]);
   const [product, setProduct] = useState({
-    nombre: null,
-    costo: null,
-    cantidad: null,
-    descripcion: null,
-    categoria: null,
-    costoOferta: null
+    nombre: "",
+    costo: "",
+    cantidad: "",
+    descripcion: "",
+    categoria: "",
+    costoOferta: ""
   });
   const [images, setImages] = useState({
     files: null,
@@ -34,27 +34,24 @@ export const AddProduct = ({ setVisible, visible }) => {
     categorias.forEach((categoria) => {
       if (categoria.nombre == value) {
         setProduct({ ...product, categoria: categoria });
-        console.log(value);
       }
     });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!images.files) {
       alert("Por favor, selecciona archivos");
       return;
     }
-    console.log(product);
     try {
       const result = await postData("producto", product);
-      console.log(result);
-      console.log(images.files);
       formData.append("productoId", result.idProducto);
       for (let i = 0; i < images.files.length; i++) {
         formData.append("files", images.files[i]);
       }
       const response = await axios.post(
-        "https://apirest-variedadesbyj.onrender.com/byj/imagenesProductos",
+        "http://localhost:8080/byj/imagenesProductos",
         formData,
         {
           headers: {
@@ -62,13 +59,22 @@ export const AddProduct = ({ setVisible, visible }) => {
           },
         }
       );
-      console.log(response.data);
+
       if (response.data) {
+        setProduct({
+          nombre: "",
+          costo: "",
+          cantidad: "",
+          descripcion: "",
+          categoria: "",
+          costoOferta: ""
+        })
         Swal.fire({
           title: "Agregado correctamente",
           icon: "success",
         });
       }
+      
     } catch (error) {
       console.log(error);
     }
@@ -138,6 +144,7 @@ export const AddProduct = ({ setVisible, visible }) => {
               type="number"
               class="form-control"
               id="validationCustom02"
+              value={ product.costoOferta}
               onChange={(e) =>
                 setProduct({ ...product, costoOferta: e.target.value })
               }
