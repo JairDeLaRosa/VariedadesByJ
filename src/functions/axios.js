@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const BASE_URL = 'https://apirest-variedadesbyj.onrender.com'; 
+const BASE_URL = 'https://apirest-variedadesbyj.onrender.com/byj'; 
 
 
 export const fetchData = async (endpoint) => {
