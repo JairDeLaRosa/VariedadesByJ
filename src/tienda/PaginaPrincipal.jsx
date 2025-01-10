@@ -93,10 +93,13 @@ export const PaginaPrincipal = () => {
         className="container mb-3 mt-3 d-flex justify-content-center"
         style={{ flexDirection: "column", alignItems: "center" }}
       >
-        {isLoanding ? (
-          <div class="spinner-border" role="status">
+        {isLoanding ? (<>
+          <p>Esto puede tardar un poco debido a lmitaciones con los planes gratuitos.</p>
+          <div class="spinner-border mt-4" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
+        </>
+          
         ) : (
           <Products
             loandingSearch={isLoandingSearch}
