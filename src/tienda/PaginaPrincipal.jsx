@@ -94,7 +94,7 @@ export const PaginaPrincipal = () => {
         style={{ flexDirection: "column", alignItems: "center" }}
       >
         {isLoanding ? (<>
-          <p>Esto puede tardar un poco debido a lmitaciones con los planes gratuitos.</p>
+          <p>Esto puede tardar un poco debido a limitaciones con los planes gratuitos.</p>
           <div class="spinner-border mt-4" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
