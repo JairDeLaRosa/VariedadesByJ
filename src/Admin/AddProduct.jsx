@@ -3,7 +3,7 @@ import { fetchData, postData } from "../functions/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export const AddProduct = ({ setVisible, visible }) => {
+export const AddProduct = ({ setVisible, visible, buscarProductos }) => {
   const [checkOferta, setCheckOferta] = useState(false);
   const [categorias, setCategorias] = useState([]);
   const [product, setProduct] = useState({
@@ -51,7 +51,7 @@ export const AddProduct = ({ setVisible, visible }) => {
         formData.append("files", images.files[i]);
       }
       const response = await axios.post(
-        "https://apirest-variedadesbyj.onrender.com/byj/imagenesProductos",
+        "http://localhost:8080/byj/imagenesProductos",
         formData,
         {
           headers: {
@@ -69,6 +69,7 @@ export const AddProduct = ({ setVisible, visible }) => {
           categoria: "",
           costoOferta: ""
         })
+        buscarProductos()
         Swal.fire({
           title: "Agregado correctamente",
           icon: "success",

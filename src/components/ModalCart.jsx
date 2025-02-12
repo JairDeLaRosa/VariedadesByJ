@@ -2,35 +2,95 @@ import React from "react";
 import { ProductCart } from "./ProductCart";
 import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
+import { postData } from "../functions/axios";
 
-export default function ModalCart({ productsCart,precioTotal,setProductsCart }) {
-  
-  const comprar = () => {
-    let mensaje="Hola, quiero comprar los siguientes productos:"
-    if(productsCart.length!=0){
-      productsCart.forEach(produto=>{
-        mensaje+=`
+export default function ModalCart({
+  productsCart,
+  precioTotal,
+  setProductsCart,
+}) {
+  const cliente = { idCliente: localStorage.getItem("idCliente") };
+
+  const registrarDetalleDeCompra = async (
+    cantidad,
+    precioUnitario,
+    compra,
+    producto
+  ) => {
+    const dataDetalleCompra = {
+      cantidad: cantidad,
+      precioUnitario: precioUnitario,
+      compra: compra,
+      producto: { idProducto: producto.idProducto },
+    };
+    const result = await postData("detallesDeCompras", dataDetalleCompra);
+    console.log(result);
+  };
+  const regstrarPedido = async (total) => {
+    const fechaActual = new Date();
+
+    const opcionesFecha = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false, // Usar formato de 24 horas
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    };
+
+    const fechaFormateada = fechaActual.toLocaleString("es-ES", opcionesFecha);
+    const dataPedido = {
+      fecha: fechaFormateada,
+      cliente: cliente,
+      total: total,
+      aprobada: false,
+    };
+    const result = await postData("compras", dataPedido);
+    return result;
+  };
+
+  const comprar = async () => {
+    if (productsCart.length != 0) {
+      try {
+        const result = await regstrarPedido(precioTotal);
+        console.log(result);
+        let mensaje = "Hola, quiero comprar los siguientes productos:";
+        productsCart.forEach((produto) => {
+          mensaje += `
       * ${produto.nombre}
         Cantidad: ${produto.unidades}
         Precio: $${produto.precio}
-        `
-      })
-      mensaje+=`
-      Precio total: $${precioTotal}`
+        `;
+          registrarDetalleDeCompra(
+            produto.unidades,
+            produto.precio / produto.unidades,
+            result,
+            produto
+          );
+        });
+        mensaje += `
+      Precio total: $${precioTotal}`;
+        const url = `https://wa.me/3008021971?text=${encodeURIComponent(
+          mensaje
+        )}`;
+        window.open(url, "_blank");
+        Swal.fire({
+          title: "Pedido realizado",
+          icon: "success",
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
-    const url=`https://wa.me/3008021971?text=${encodeURIComponent(mensaje)}`
-    window.open(url,"_blank")
-    Swal.fire({
-      title: "Pedido realizado",
-      icon: "success",
-    });
   };
-  const onClickQuitar=(producto)=>{
-    const arrayProductsFilter = productsCart.filter(obj => 
-      JSON.stringify(obj) !== JSON.stringify(producto)
+  const onClickQuitar = (producto) => {
+    const arrayProductsFilter = productsCart.filter(
+      (obj) => JSON.stringify(obj) !== JSON.stringify(producto)
     );
-    setProductsCart(arrayProductsFilter)
-  }
+    setProductsCart(arrayProductsFilter);
+  };
   return (
     <>
       <div
@@ -55,7 +115,7 @@ export default function ModalCart({ productsCart,precioTotal,setProductsCart }) 
             </div>
             <div class="modal-body">
               {productsCart.map((produc) => (
-                <ProductCart product={produc} onClickQuitar={onClickQuitar}/>
+                <ProductCart product={produc} onClickQuitar={onClickQuitar} />
               ))}
             </div>
             <div class="modal-footer d-flex justify-content-between">

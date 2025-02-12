@@ -3,6 +3,7 @@ import { StarRating } from "./StarRating";
 import { NumericFormat } from "react-number-format";
 import Swal from "sweetalert2";
 import { sesion } from "../functions/Sesion";
+import { fetchData, postData } from "../functions/axios";
 
 export const ModalProduct = ({
   product,
@@ -10,10 +11,49 @@ export const ModalProduct = ({
   cantidad,
   setCantidad,
 }) => {
+  const cliente={idCliente: localStorage.getItem("idCliente")}
+  const registrarPedido=async(cliente,total,cantidad, producto, precioUnitario)=>{
+    try {
+      const fechaActual = new Date();
+      const opcionesFecha = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false, 
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+      };
+      
+      const fechaFormateada = fechaActual.toLocaleString('es-ES', opcionesFecha);
+    const dataPedido={
+      fecha: fechaFormateada,
+      cliente: cliente,
+      total: total,
+      aprobada: false
+    }
+      
+      const result = await postData("compras",dataPedido)
+      console.log(result)
+      const dataDetalleCompra={
+        cantidad: cantidad,
+        precioUnitario: precioUnitario,
+        compra: result,
+        producto: {idProducto: producto.idProducto}
+      }
+      await postData("detallesDeCompras", dataDetalleCompra)
+      const result2=await fetchData("compras")
+      console.log(result2)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const onClickAgregarAlCarro = () => {
     if (localStorage.getItem("sesion")) {
       if (product.costoOferta == null) {
         onClickAgregarCarrito({
+          idProducto: product.idProducto,
           img: product.imagenes[0].url,
           nombre: product.nombre,
           unidades: cantidad,
@@ -21,6 +61,7 @@ export const ModalProduct = ({
         });
       } else {
         onClickAgregarCarrito({
+          idProducto: product.idProducto,
           img: product.imagenes[0].url,
           nombre: product.nombre,
           unidades: cantidad,
@@ -54,6 +95,7 @@ export const ModalProduct = ({
   };
   const comprar = () => {
     if(localStorage.getItem("sesion")){
+      
       let mensaje = "Hola, quiero comprar este producto:";
     if (product.costoOferta == null) {
       mensaje += `
@@ -61,12 +103,14 @@ export const ModalProduct = ({
         Cantidad: ${cantidad}
         Precio: $${(product.costo * cantidad)}
         `;
+        registrarPedido(cliente, product.costo * cantidad,cantidad,product,product.costo)
     }else{
       mensaje += `
       * ${product.nombre}
         Cantidad: ${cantidad}
         Precio: $${(product.costoOferta * cantidad)}
         `;
+        registrarPedido(cliente, product.costoOferta * cantidad,cantidad,product,product.costoOferta)
     }
     const url = `https://wa.me/3008021971?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");

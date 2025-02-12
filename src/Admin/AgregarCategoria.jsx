@@ -3,7 +3,7 @@ import { capitalizeFirstLetter } from "../functions/funciones";
 import { postData } from "../functions/axios";
 import Swal from "sweetalert2";
 
-export const AgregarCategoria = ({ setVisible, visible }) => {
+export const AgregarCategoria = ({ setVisible, visible,buscarcategorias }) => {
   const [categoria, setCategoria] = useState({
     nombre: null,
     seccion: null,
@@ -12,6 +12,7 @@ export const AgregarCategoria = ({ setVisible, visible }) => {
     try {
       const result = await postData("categoria", categoria);
       if (result) {
+        buscarcategorias()
         Swal.fire({
           title: "Agregado correctamente",
           icon: "success",
@@ -54,7 +55,7 @@ export const AgregarCategoria = ({ setVisible, visible }) => {
           aria-label="Close"
           style={{ position: "absolute", right: "0", top: "-30px" }}
           onClick={() =>
-            setVisible({ ...visible, menu: true, AgregarCategoria: false }) 
+            setVisible({ ...visible, menu: true, agregarCategoria: false }) 
           }
         ></button>
           <label for="validationCustom01" class="form-label">
